@@ -10,14 +10,14 @@ function CTASection() {
           animate={{ opacity: 1, scale: 1 }}
           className="text-4xl font-bold mb-6"
         >
-          Don't Just Learn, Earn Your Knowledge!
+          Don&apos;t Just Learn, Earn Your Knowledge!
         </motion.h2>
         <div className="flex justify-center space-x-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition"
           >
-            Sign Up & Start Learning
+            Sign Up &amp; Start Learning
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
