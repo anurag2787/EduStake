@@ -223,14 +223,12 @@ const StarryBackground = () => {
 export default function HomePage() {
   return (
     <div className="min-h-screen text-white relative">
-      <Navbar/>
       <StarryBackground />
       <HeroSection />
       <Showcase />
       <ScrollBanner />
       <HowItWorksSection />
       <CTASection />
-      <Footer />
     </div>
   );
 }

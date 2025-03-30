@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, BookOpen } from 'lucide-react';
@@ -78,7 +79,7 @@ function Navbar() {
               
               {/* Right menu items - hidden on mobile */}
               <div className="hidden md:flex items-center space-x-8">
-                <a href="#courses" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">Courses</a>
+                <a href="/studycourse" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">Courses</a>
                 <motion.a 
                   href="#connect"
                   whileHover={{ scale: 1.05 }}
@@ -113,7 +114,7 @@ function Navbar() {
                   <a href="#how-it-works" className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
                     How It Works
                   </a>
-                  <a href="#courses" className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
+                  <a href="/studycourse" className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
                     Courses
                   </a>
                   <a href="#connect" className="block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-5 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition text-center mt-4">

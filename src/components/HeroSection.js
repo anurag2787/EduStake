@@ -1,7 +1,15 @@
+'use client'
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 function HeroSection() {
+  const router = useRouter();
+
+  const handleexplore = () => {
+    router.push('/studycourse');
+  };
+
   return (
     <div className="relative min-h-screen bg-transparent text-white flex items-center justify-center text-center overflow-hidden">
       {/* Floating Particles */}
@@ -48,6 +56,7 @@ function HeroSection() {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleexplore}
               className="bg-gray-700 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition"
             >
               Explore Courses

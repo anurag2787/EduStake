@@ -1,10 +1,12 @@
+'use client'
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Twitter, Linkedin, Github, BookOpen } from 'lucide-react';
+import Link from 'next/link';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-black/90 text-white/80 py-6 border-t border-gray-800">
       <div className="container mx-auto px-6">
@@ -19,20 +21,25 @@ function Footer() {
               EduStake
             </span>
           </div>
-          
+
           {/* Quick links */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4 md:mb-0">
-            {['Home', 'About', 'Courses', 'Contact'].map((link) => (
-              <a
-                key={link}
-                href="#"
+            {[
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+              { name: "Courses", path: "/studycourse" },
+              { name: "Contact", path: "/contact" },
+            ].map((link) => (
+              <Link
+                key={link.name}
+                href={link.path}
                 className="text-sm hover:text-blue-400 transition"
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </div>
-          
+
           {/* Social icons */}
           <div className="flex space-x-4">
             <motion.a
@@ -58,13 +65,13 @@ function Footer() {
             </motion.a>
           </div>
         </div>
-        
+
         {/* Bottom section with copyright and additional links */}
         <div className="pt-4 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
           <div>
             © {currentYear} EduStake. All rights reserved.
           </div>
-          
+
           <div className="flex gap-4 mt-2 md:mt-0">
             <a href="#" className="hover:text-blue-400 transition">Privacy Policy</a>
             <a href="#" className="hover:text-blue-400 transition">Terms of Service</a>
