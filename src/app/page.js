@@ -6,6 +6,7 @@ import HowItWorksSection from '@/components/HowItWorksSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import ScrollBanner from '@/components/ScrollBanner';
 
 // CSS for the animations
 const StarryBackground = () => {
@@ -226,6 +227,7 @@ export default function HomePage() {
       <StarryBackground />
       <HeroSection />
       <Showcase />
+      <ScrollBanner />
       <HowItWorksSection />
       <CTASection />
       <Footer />
