@@ -1,251 +1,230 @@
 'use client'
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Vault, 
-  Star, 
-  BookOpen, 
-  Coins, 
-  Brain, 
-  Award, 
-  Twitter, 
-  Linkedin, 
-  Github 
-} from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import HeroSection from '@/components/HeroSection';
 import Showcase from '@/components/Showcase';
 import HowItWorksSection from '@/components/HowItWorksSection';
-import HeroSection from '@/components/HeroSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 
-// // Hero Section
-// const HeroSection = () => {
-//   return (
-//     <div className="relative min-h-screen bg-gradient-to-br from-[#0D0D0D] to-[#0057FF] text-white overflow-hidden">
-//       {/* Subtle Floating Particles (Simulated with CSS) */}
-//       <div className="absolute inset-0 opacity-30">
-//         {[...Array(20)].map((_, i) => (
-//           <div 
-//             key={i} 
-//             className="absolute bg-white/20 rounded-full animate-float"
-//             style={{
-//               width: `${Math.random() * 10}px`,
-//               height: `${Math.random() * 10}px`,
-//               top: `${Math.random() * 100}%`,
-//               left: `${Math.random() * 100}%`,
-//               animationDelay: `${Math.random() * 5}s`
-//             }}
-//           />
-//         ))}
-//       </div>
+// CSS for the animations
+const StarryBackground = () => {
+  const canvasRef = useRef(null);
 
-//       <div className="container mx-auto px-4 pt-24 text-center relative z-10">
-//         <motion.h1 
-//           initial={{ opacity: 0, y: -50 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.8 }}
-//           className="text-5xl md:text-6xl font-bold mb-6"
-//         >
-//           Learn with <span className="text-blue-400">Confidence</span>, 
-//           Earn with <span className="text-blue-400">Knowledge</span>!
-//         </motion.h1>
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 3; // Make it 3x the height to cover all sections
+    };
+    
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+    
+    // Star properties
+    const stars = [];
+    const shootingStars = [];
+    const sparkles = []; // New array for sparkle effects
+    const starCount = Math.floor((canvas.width * canvas.height) / 6000); // Increased density
+    
+    // Create stars
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.8, // Slightly larger stars
+        opacity: Math.random() * 0.8 + 0.3, // Higher minimum opacity
+        pulse: Math.random() * 0.1,
+        pulseSpeed: 0.02 + Math.random() * 0.03, // Faster pulsing
+        sparkleTimer: Math.random() * 100 // Random timer for sparkle effect
+      });
+    }
+    
+    // Create occasional shooting stars
+    const createShootingStar = () => {
+      if (shootingStars.length < 4 && Math.random() < 0.03) { // Increased probability
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * (canvas.height / 2); // Expanded area
+        
+        shootingStars.push({
+          x,
+          y,
+          length: 100 + Math.random() * 150, // Longer trails
+          speed: 12 + Math.random() * 25, // Faster speed
+          angle: (Math.PI / 4) + (Math.random() * Math.PI / 4),
+          opacity: 0.9 // Higher opacity
+        });
+      }
+    };
+    
+    // Create sparkle effect
+    const createSparkle = (x, y, size) => {
+      sparkles.push({
+        x,
+        y,
+        size: size * 0.7,
+        opacity: 0.9,
+        duration: 20 + Math.random() * 30
+      });
+    };
+    
+    // Draw stars
+    const drawStars = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Create darker gradient background with less blue
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, '#050505'); // Much darker top
+      gradient.addColorStop(0.5, '#071428'); // Darker blue middle
+      gradient.addColorStop(1, '#081832'); // Darker blue bottom
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw stars
+      stars.forEach(star => {
+        // Update pulsing
+        star.opacity += Math.sin(star.pulse) * star.pulseSpeed;
+        star.pulse += 0.04; // Faster pulsing
+        
+        // Occasionally create sparkle effect
+        star.sparkleTimer -= 1;
+        if (star.sparkleTimer <= 0 && Math.random() < 0.1) {
+          createSparkle(star.x, star.y, star.radius * 3);
+          star.sparkleTimer = 80 + Math.random() * 200;
+        }
+        
+        // Create a radial gradient for the glow effect
+        const glow = ctx.createRadialGradient(
+          star.x, star.y, 0,
+          star.x, star.y, star.radius * 3 // Larger glow
+        );
+        
+        glow.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+        glow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius * 3, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Core of the star
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * 1.7})`; // Brighter core
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      
+      // Draw sparkles
+      sparkles.forEach((sparkle, index) => {
+        ctx.beginPath();
+        const sparkleOpacity = sparkle.opacity * (sparkle.duration / 50);
+        ctx.fillStyle = `rgba(255, 255, 255, ${sparkleOpacity})`;
+        
+        // Draw sparkle (simple 4-point star)
+        ctx.beginPath();
+        const length = sparkle.size;
+        
+        // Horizontal line
+        ctx.moveTo(sparkle.x - length, sparkle.y);
+        ctx.lineTo(sparkle.x + length, sparkle.y);
+        
+        // Vertical line
+        ctx.moveTo(sparkle.x, sparkle.y - length);
+        ctx.lineTo(sparkle.x, sparkle.y + length);
+        
+        ctx.strokeStyle = `rgba(255, 255, 255, ${sparkleOpacity})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        
+        // Update sparkle
+        sparkle.duration -= 1;
+        
+        // Remove faded sparkles
+        if (sparkle.duration <= 0) {
+          sparkles.splice(index, 1);
+        }
+      });
+      
+      // Draw shooting stars
+      shootingStars.forEach((star, index) => {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.lineWidth = 2;
+        
+        // Calculate end point
+        const endX = star.x - Math.cos(star.angle) * star.length;
+        const endY = star.y + Math.sin(star.angle) * star.length;
+        
+        // Draw line
+        ctx.moveTo(star.x, star.y);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        
+        // Draw glow
+        const gradient = ctx.createLinearGradient(star.x, star.y, endX, endY);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(star.x, star.y);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        
+        // Add small sparkles along the trail
+        if (Math.random() < 0.3) {
+          const trailPos = Math.random();
+          const sparkleX = star.x - Math.cos(star.angle) * star.length * trailPos;
+          const sparkleY = star.y + Math.sin(star.angle) * star.length * trailPos;
+          createSparkle(sparkleX, sparkleY, 1 + Math.random());
+        }
+        
+        // Move shooting star
+        star.x += Math.cos(star.angle) * star.speed;
+        star.y -= Math.sin(star.angle) * star.speed;
+        star.opacity -= 0.01; // Slower fade for longer trails
+        
+        // Remove if it's gone or faded
+        if (star.x < 0 || star.y > canvas.height || star.opacity <= 0) {
+          shootingStars.splice(index, 1);
+        }
+      });
+      
+      createShootingStar();
+    };
+    
+    // Animate
+    const animate = () => {
+      drawStars();
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      window.removeEventListener('resize', setCanvasSize);
+    };
+  }, []);
 
-//         <p className="text-xl mb-8 max-w-2xl mx-auto">
-//           Stake your amount, Learn with AI, Get rewarded for mastering topics!
-//         </p>
-
-//         <div className="flex justify-center space-x-4 mb-8">
-//           <motion.button 
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//             className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
-//           >
-//             Start Learning
-//           </motion.button>
-//           <motion.button 
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//             className="bg-gray-700 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition"
-//           >
-//             Explore Courses
-//           </motion.button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-
-// // Features Section
-// const Showcase = () => {
-//   const features = [
-//     {
-//       icon: Brain,
-//       title: 'AI-Powered Learning',
-//       description: 'AI summarizes & explains concepts'
-//     },
-//     {
-//       icon: Coins,
-//       title: 'Web3 Staking',
-//       description: 'Stake coins & get refunded on success'
-//     },
-//     {
-//       icon: Award,
-//       title: 'AI Quizzes & Rewards',
-//       description: 'Pass quizzes to earn bonuses'
-//     },
-//     {
-//       icon: BookOpen,
-//       title: 'Flexible Learning',
-//       description: 'Upload PDFs, Images for AI analysis'
-//     }
-//   ];
-
-//   return (
-//     <div className="bg-gradient-to-br from-[#0D0D0D] to-[#0057FF] py-16 text-white">
-//       <div className="container mx-auto px-4">
-//         <h2 className="text-4xl font-bold text-center mb-12">
-//           Why EduStake is Different
-//         </h2>
-//         <div className="grid md:grid-cols-4 gap-6">
-//           {features.map((feature, index) => (
-//             <motion.div
-//               key={index}
-//               initial={{ opacity: 0, x: -50 }}
-//               animate={{ opacity: 1, x: 0 }}
-//               transition={{ delay: index * 0.2 }}
-//               whileHover={{ scale: 1.05 }}
-//               className="bg-gray-800 border border-blue-600/30 rounded-lg p-6 text-center hover:shadow-lg hover:border-blue-500 transition"
-//             >
-//               <feature.icon size={48} className="mx-auto mb-4 text-blue-400" />
-//               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-//               <p className="text-gray-300">{feature.description}</p>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// // How It Works Section
-// const HowItWorksSection = () => {
-//   const steps = [
-//     { number: '1️⃣', title: 'Stake Securely', icon: Coins },
-//     { number: '2️⃣', title: 'AI-Driven Learning', icon: Brain },
-//     { number: '3️⃣', title: 'Take AI Quizzes', icon: Award },
-//     { number: '4️⃣', title: 'Earn Rewards', icon: Star }
-//   ];
-
-//   return (
-//     <div className="bg-gradient-to-br from-[#0D0D0D] to-[#0057FF] py-16 text-white">
-//       <div className="container mx-auto px-4">
-//         <h2 className="text-4xl font-bold text-center mb-12">
-//           How EduStake Works
-//         </h2>
-//         <div className="flex justify-between items-center space-x-4">
-//           {steps.map((step, index) => (
-//             <motion.div
-//               key={index}
-//               initial={{ opacity: 0, y: 50 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ delay: index * 0.3 }}
-//               className="text-center"
-//             >
-//               <div className="bg-blue-900/30 rounded-full p-4 mb-4 inline-block">
-//                 <step.icon size={48} className="text-blue-400" />
-//               </div>
-//               <h3 className="text-xl font-semibold">{step.title}</h3>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// // Final CTA Section
-// const CTASection = () => {
-//   return (
-//     <div className="bg-gradient-to-br from-[#0D0D0D] to-[#0057FF] text-white py-16">
-//       <div className="container mx-auto px-4 text-center">
-//         <motion.h2
-//           initial={{ opacity: 0, scale: 0.9 }}
-//           animate={{ opacity: 1, scale: 1 }}
-//           className="text-4xl font-bold mb-6"
-//         >
-//           Don't Just Learn, Earn Your Knowledge!
-//         </motion.h2>
-//         <div className="flex justify-center space-x-4">
-//           <motion.button
-//             whileHover={{ scale: 1.05 }}
-//             className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition"
-//           >
-//             Sign Up & Start Learning
-//           </motion.button>
-//           <motion.button
-//             whileHover={{ scale: 1.05 }}
-//             className="border border-white/50 text-white px-8 py-4 rounded-full hover:bg-white/10 transition"
-//           >
-//             Explore Free Content
-//           </motion.button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// // Footer Section
-// const Footer = () => {
-//   const socialIcons = [Twitter, Linkedin, Github];
-
-//   return (
-//     <footer className="bg-gray-900 text-white py-12">
-//       <div className="container mx-auto px-4 grid md:grid-cols-3 gap-8">
-//         <div>
-//           <h4 className="text-xl font-bold mb-4">Quick Links</h4>
-//           {['Home', 'About', 'Courses', 'Contact'].map((link) => (
-//             <a 
-//               key={link} 
-//               href="#" 
-//               className="block py-2 hover:text-blue-400 transition"
-//             >
-//               {link}
-//             </a>
-//           ))}
-//         </div>
-//         <div>
-//           <h4 className="text-xl font-bold mb-4">Contact</h4>
-//           <p>support@edustake.com</p>
-//         </div>
-//         <div>
-//           <h4 className="text-xl font-bold mb-4">Follow Us</h4>
-//           <div className="flex space-x-4">
-//             {socialIcons.map((Icon, index) => (
-//               <motion.a
-//                 key={index}
-//                 href="#"
-//                 whileHover={{ scale: 1.2, rotate: 5 }}
-//                 className="text-blue-400 hover:text-blue-300 transition"
-//               >
-//                 <Icon size={24} />
-//               </motion.a>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// Main Homepage Component
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="fixed top-0 left-0 w-full h-full -z-10"
+    />
+  );
+};
 
 export default function HomePage() {
   return (
-    <div className="bg-gray-950 text-white h-screen">
+    <div className="min-h-screen text-white relative">
+      <StarryBackground />
       <HeroSection />
       <Showcase />
-      <HowItWorksSection/>
+      <HowItWorksSection />
       <CTASection />
       <Footer />
     </div>

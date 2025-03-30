@@ -1,29 +1,28 @@
-import React from 'react'
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Vault, Star, BookOpen, Coins, Brain, Award, Twitter, Linkedin, Github } from 'lucide-react';
 
+function HeroSection() {
+  return (
+    <div className="relative min-h-screen bg-transparent text-white flex items-center justify-center text-center overflow-hidden">
+      {/* Floating Particles */}
+      <div className="absolute inset-0 opacity-30">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i} 
+            className="absolute bg-white/20 rounded-full animate-float"
+            style={{
+              width: `${Math.random() * 10}px`,
+              height: `${Math.random() * 10}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+      </div>
 
-function HeroSection(){
-    return (
-      <div className="relative min-h-screen bg-gradient-to-br from-[#0D0D0D] to-[#0057FF] text-white overflow-hidden">
-        {/* Subtle Floating Particles (Simulated with CSS) */}
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(20)].map((_, i) => (
-            <div 
-              key={i} 
-              className="absolute bg-white/20 rounded-full animate-float"
-              style={{
-                width: `${Math.random() * 10}px`,
-                height: `${Math.random() * 10}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`
-              }}
-            />
-          ))}
-        </div>
-  
-        <div className="container mx-auto px-4 pt-24 text-center relative z-10">
+      {/* Centered Content */}
+      <div className="container mx-auto px-4 pt-24 text-center relative z-10">
           <motion.h1 
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,8 +54,8 @@ function HeroSection(){
             </motion.button>
           </div>
         </div>
-      </div>
-    );
-  };
+    </div>
+  );
+}
 
-export default HeroSection
+export default HeroSection;

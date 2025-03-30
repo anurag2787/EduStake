@@ -28,7 +28,7 @@ function Showcase() {
     ];
 
     return (
-        <div className="bg-gradient-to-br from-[#0D0D0D] to-[#0057FF] py-16 text-white">
+        <div id="features" className="bg-transparent py-16 text-white">
             <div className="container mx-auto px-4">
                 <h2 className="text-4xl font-bold text-center mb-12">
                     Why EduStake is Different
@@ -41,7 +41,7 @@ function Showcase() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.2 }}
                             whileHover={{ scale: 1.05 }}
-                            className="bg-gray-800 border border-blue-600/30 rounded-lg p-6 text-center hover:shadow-lg hover:border-blue-500 transition"
+                            className="bg-gradient-to-br from-[#3b3737] to-[#0652e8] backdrop-blur-sm border-blue-600/30 rounded-lg p-6 text-center hover:shadow-lg hover:border-blue-500 hover:-translate-y-4 transition-all duration-300"
                         >
                             <feature.icon size={48} className="mx-auto mb-4 text-blue-400" />
                             <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
