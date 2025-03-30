@@ -5,6 +5,7 @@ import Showcase from '@/components/Showcase';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 // CSS for the animations
 const StarryBackground = () => {
@@ -221,6 +222,7 @@ const StarryBackground = () => {
 export default function HomePage() {
   return (
     <div className="min-h-screen text-white relative">
+      <Navbar/>
       <StarryBackground />
       <HeroSection />
       <Showcase />
