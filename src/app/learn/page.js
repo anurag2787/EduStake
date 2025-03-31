@@ -11,7 +11,6 @@ import AiSummarySection from '@/app/learn/ai-learning/AiSummarySection';
 import UserUploads from '@/app/learn/ai-learning/UserUploads';
 import FlashcardCarousel from '@/app/learn/ai-learning/FlashcardCarousel';
 import DiscussionForum from '@/app/learn/ai-learning/DiscussionForum';
-import MindMapGenerator from '@/app/learn/ai-learning/MindMapGenerator';
 
 export default function AiLearningPage() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -27,7 +26,6 @@ export default function AiLearningPage() {
     { id: 'summary', icon: '📝', label: 'Summary' },
     { id: 'flashcards', icon: '🃏', label: 'Flashcards' },
     { id: 'forum', icon: '💬', label: 'Discussion' },
-    { id: 'mindmap', icon: '🧠', label: 'Mind Map' },
   ];
 
   return (
@@ -61,26 +59,38 @@ export default function AiLearningPage() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
-        <HeroSection setActiveSection={setActiveSection} />
+        <AnimatePresence>
+          {activeSection === 'hero' && (
+            <HeroSection setActiveSection={setActiveSection} />
+          )}
+        </AnimatePresence>
         
         {/* AI Summary Section */}
         <AnimatePresence>
           {activeSection === 'summary' && (
-            <AiSummarySection aiSummary={aiSummary} setAiSummary={setAiSummary} />
+            <AiSummarySection aiSummary={aiSummary} setAiSummary={setAiSummary} setActiveSection={setActiveSection} />
           )}
         </AnimatePresence>
 
         {/* User Uploads */}
         <AnimatePresence>
           {activeSection === 'upload' && (
-            <UserUploads fileUploaded={fileUploaded} setFileUploaded={setFileUploaded} setAiSummary={setAiSummary} setActiveSection={setActiveSection} />
+            <UserUploads 
+              fileUploaded={fileUploaded} 
+              setFileUploaded={setFileUploaded} 
+              setAiSummary={setAiSummary} 
+              setActiveSection={setActiveSection} 
+            />
           )}
         </AnimatePresence>
 
         {/* Interactive Flashcards */}
         <AnimatePresence>
           {activeSection === 'flashcards' && (
-            <FlashcardCarousel aiSummary={aiSummary} />
+            <FlashcardCarousel 
+              aiSummary={aiSummary} 
+              setActiveSection={setActiveSection} 
+            />
           )}
         </AnimatePresence>
 
@@ -88,13 +98,6 @@ export default function AiLearningPage() {
         <AnimatePresence>
           {activeSection === 'forum' && (
             <DiscussionForum />
-          )}
-        </AnimatePresence>
-
-        {/* Auto-Generated Mind Maps */}
-        <AnimatePresence>
-          {activeSection === 'mindmap' && (
-            <MindMapGenerator aiSummary={aiSummary} />
           )}
         </AnimatePresence>
 

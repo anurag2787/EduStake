@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-export default function AiSummarySection({ aiSummary, setAiSummary }) {
+export default function AiSummarySection({ aiSummary, setAiSummary, setActiveSection }) {
   if (!aiSummary) return null;
   
   return (
@@ -67,25 +67,11 @@ export default function AiSummarySection({ aiSummary, setAiSummary }) {
             boxShadow: '0 0 15px 2px rgba(59, 130, 246, 0.4)',
           }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => window.location.href = '#flashcards'}
+          onClick={() => setActiveSection('flashcards')}
         >
           Generate Flashcards
         </motion.button>
         
-        <motion.button
-          className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full text-white font-bold shadow-lg shadow-blue-600/20"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          whileHover={{ 
-            scale: 1.05, 
-            boxShadow: '0 0 15px 2px rgba(59, 130, 246, 0.4)',
-          }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => window.location.href = '#mindmap'}
-        >
-          Create Mind Map
-        </motion.button>
         
         <motion.button
           className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full text-white font-bold shadow-lg shadow-blue-600/20"
@@ -97,7 +83,7 @@ export default function AiSummarySection({ aiSummary, setAiSummary }) {
             boxShadow: '0 0 15px 2px rgba(59, 130, 246, 0.4)',
           }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => window.location.href = '#forum'}
+          onClick={() => setActiveSection('forum')}
         >
           Ask Questions
         </motion.button>

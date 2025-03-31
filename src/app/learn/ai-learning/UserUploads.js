@@ -55,7 +55,9 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
         },
         body: JSON.stringify({
           content: fileContent,
-          filename: fileUploaded.name
+          filename: fileUploaded.name,
+          generateFlashcards: true,  // New parameter to request flashcards
+          generateMindMap: true      // New parameter to request mind map data
         }),
       });
 
@@ -105,12 +107,14 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
       // Call Gemini API with the content
       const geminiResponse = await callGeminiAPI(fileContent);
 
-      // Parse and set the AI summary
+      // Parse and set the AI summary with additional data for flashcards and mind map
       setAiSummary({
         title: fileUploaded.name.split('.')[0],
         summary: geminiResponse.summary,
         keyPoints: geminiResponse.keyPoints,
-        concepts: geminiResponse.concepts || {} // Ensure concepts exists
+        concepts: geminiResponse.concepts || {}, // Ensure concepts exists
+        flashcards: geminiResponse.flashcards || [], // Add flashcards array
+        mindMapData: geminiResponse.mindMapData || {} // Add mind map data
       });
 
       // Switch to summary view
