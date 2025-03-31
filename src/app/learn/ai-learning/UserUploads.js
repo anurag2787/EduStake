@@ -48,7 +48,7 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
 
   const callGeminiAPI = async (fileContent) => {
     try {
-      const response = await fetch('http://localhost:5000/api/gemini-summarize', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/gemini-summarize`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
