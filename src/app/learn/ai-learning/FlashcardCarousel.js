@@ -95,7 +95,6 @@ export default function FlashcardCarousel({ aiSummary }) {
                   className="absolute inset-0 flex flex-col items-center justify-center p-6 rounded-xl bg-gradient-to-br from-blue-800 to-indigo-900 text-white shadow-lg shadow-blue-700/30 border border-blue-600/30 backface-hidden"
                   style={{ backfaceVisibility: 'hidden' }}
                 >
-                  // components/ai-learning/FlashcardCarousel.jsx (continued)
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl opacity-10 blur-sm pointer-events-none"></div>
                   <motion.div
                     className="absolute -inset-1 bg-blue-400 rounded-xl blur opacity-20 pointer-events-none"
