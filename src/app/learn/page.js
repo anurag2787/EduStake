@@ -16,7 +16,6 @@ export default function AiLearningPage() {
   const [activeSection, setActiveSection] = useState('hero');
   const [fileUploaded, setFileUploaded] = useState(null);
   const [aiSummary, setAiSummary] = useState(null);
-  const [learningStreak, setLearningStreak] = useState(5); // Example streak count
   const [hoveredButton, setHoveredButton] = useState(null);
 
   // Navigation items with their icons and label names
@@ -45,16 +44,6 @@ export default function AiLearningPage() {
         </svg>
       </motion.button>
       
-      {/* Streak Display */}
-      <motion.div 
-        className="fixed top-6 right-6 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full px-4 py-2 flex items-center gap-2 z-50"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.8 }}
-      >
-        <span className="text-lg">🔥</span>
-        <span className="font-bold">{learningStreak} day streak</span>
-      </motion.div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

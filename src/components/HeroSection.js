@@ -10,6 +10,10 @@ function HeroSection() {
     router.push('/studycourse');
   };
 
+  const handlelearn= () => {
+    router.push('/learn');
+  };
+
   return (
     <div className="relative min-h-screen bg-transparent text-white flex items-center justify-center text-center overflow-hidden">
       {/* Floating Particles */}
@@ -49,6 +53,7 @@ function HeroSection() {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handlelearn}
               className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
             >
               Start Learning

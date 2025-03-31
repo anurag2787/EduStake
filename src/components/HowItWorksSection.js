@@ -1,8 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Coins, Award, Star } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 function HowItWorksSection() {
+  const router = useRouter();
+
+  const handlelearn= () => {
+    router.push('/learn');
+  };
+
   const steps = [
     { 
       number: '1️⃣', 
@@ -71,7 +78,7 @@ function HowItWorksSection() {
           transition={{ delay: 1, duration: 0.8 }}
           className="mt-16 text-center"
         >
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-blue-500/50">
+          <button onClick={handlelearn} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-blue-500/50">
             Start Your Learning Journey
           </button>
         </motion.div>
