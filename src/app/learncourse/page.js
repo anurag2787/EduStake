@@ -135,7 +135,7 @@ export default function LearnCoursePage() {
                 <div className="flex-1 bg-blue-900/20 rounded-lg p-4 overflow-y-auto mb-4">
                   <div className="bg-blue-800/30 rounded-lg p-3 mb-3 max-w-[80%]">
                     <p className="text-sm font-medium mb-1">AI Assistant</p>
-                    <p>Hello! I'm your AI learning assistant for this C Programming course. How can I help you today?</p>
+                    <p>Hello! I&apos;m your AI learning assistant for this C Programming course. How can I help you today?</p>
                   </div>
                   
                   <div className="bg-blue-600/30 rounded-lg p-3 mb-3 max-w-[80%] ml-auto">
@@ -145,11 +145,11 @@ export default function LearnCoursePage() {
                   
                   <div className="bg-blue-800/30 rounded-lg p-3 mb-3 max-w-[80%]">
                     <p className="text-sm font-medium mb-1">AI Assistant</p>
-                    <p>Sure! Think of pointers like addresses in a city. If variables are houses where data lives, pointers are pieces of paper with addresses written on them. They don't contain the actual data, they just tell you where to find it in computer memory.</p>
+                    <p>Sure! Think of pointers like addresses in a city. If variables are houses where data lives, pointers are pieces of paper with addresses written on them. They don&apos;t contain the actual data, they just tell you where to find it in computer memory.</p>
                     <p className="mt-2">In C, you create a pointer with the * symbol:</p>
                     <pre className="bg-blue-950/50 p-2 rounded mt-2 overflow-x-auto">
                       int number = 42;<br/>
-                      int *pointer = &number; // pointer now "points to" number
+                      int *pointer = &number; // pointer now &quot;points to&quot; number
                     </pre>
                     <p className="mt-2">Does that help? Would you like me to explain more about how to use them?</p>
                   </div>
