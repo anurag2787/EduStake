@@ -57,8 +57,8 @@ function Navbar() {
               
               {/* Left menu items - hidden on mobile */}
               <div className="hidden md:flex items-center space-x-8">
-                <a href="#features" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">Features</a>
-                <a href="#how-it-works" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">How It Works</a>
+                <a href="/#features" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">Features</a>
+                <a href="/#how-it-works" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">How It Works</a>
               </div>
               
               {/* Logo (centered) */}

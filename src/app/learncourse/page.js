@@ -12,6 +12,12 @@ export default function LearnCoursePage() {
     const router = useRouter();
     const { search } = useRouter();
     const searchParams = new URLSearchParams(search);
+
+    const handleaskquiz = (courseId) => {
+        router.push(`/quiz?courseId=${courseId}`);
+    }
+
+
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const queryId = params.get("id");
@@ -299,6 +305,7 @@ export default function LearnCoursePage() {
                                             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition-colors"
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
+                                            onClick={() => handleaskquiz(courseId)}
                                         >
                                             Start Quiz
                                         </motion.button>
