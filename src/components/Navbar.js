@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, BookOpen } from 'lucide-react';
+import Link from "next/link";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,20 +14,20 @@ function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Determine if scrolled
       setIsScrolled(currentScrollY > 10);
-      
+
       // Hide on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setVisible(false);
       } else {
         setVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
@@ -41,9 +42,8 @@ function Navbar() {
           transition={{ duration: 0.3 }}
           className={`fixed left-0 right-0 z-50 transition-all duration-300 mt-4 mx-4`}
         >
-          <div className={`max-w-7xl mx-auto rounded-full px-4 py-2 ${
-            isScrolled ? 'bg-black/50 backdrop-blur-lg shadow-lg shadow-blue-900/20' : 'bg-black/30 backdrop-blur-md'
-          }`}>
+          <div className={`max-w-7xl mx-auto rounded-full px-4 py-2 ${isScrolled ? 'bg-black/50 backdrop-blur-lg shadow-lg shadow-blue-900/20' : 'bg-black/30 backdrop-blur-md'
+            }`}>
             <div className="flex justify-between items-center h-16">
               {/* Mobile menu button */}
               <div className="flex md:hidden">
@@ -54,16 +54,20 @@ function Navbar() {
                   {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </div>
-              
+
               {/* Left menu items - hidden on mobile */}
               <div className="hidden md:flex items-center space-x-8">
-                <a href="/#features" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">Features</a>
-                <a href="/#how-it-works" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">How It Works</a>
+                <Link href="/#features" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">
+                  Features
+                </Link>
+                <Link href="/#how-it-works" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">
+                  How It Works
+                </Link>
               </div>
-              
+
               {/* Logo (centered) */}
               <div className="flex items-center">
-                <motion.a 
+                <motion.a
                   href="/"
                   className="flex items-center"
                   whileHover={{ scale: 1.05 }}
@@ -76,11 +80,11 @@ function Navbar() {
                   </span>
                 </motion.a>
               </div>
-              
+
               {/* Right menu items - hidden on mobile */}
               <div className="hidden md:flex items-center space-x-8">
                 <a href="/studycourse" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">Courses</a>
-                <motion.a 
+                <motion.a
                   href="#connect"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -89,18 +93,18 @@ function Navbar() {
                   Connect Wallet
                 </motion.a>
               </div>
-              
+
               {/* Empty div to balance the mobile menu button */}
               <div className="flex md:hidden">
                 <div className="w-10"></div>
               </div>
             </div>
           </div>
-          
+
           {/* Mobile menu */}
           <AnimatePresence>
             {isMobileMenuOpen && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
@@ -108,12 +112,19 @@ function Navbar() {
                 className="md:hidden bg-black/70 backdrop-blur-lg rounded-3xl mt-2 mx-auto max-w-7xl overflow-hidden shadow-lg shadow-blue-900/20"
               >
                 <div className="px-6 py-5 space-y-3">
-                  <a href="#features" className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
+                  <Link
+                    href="/#features"
+                    className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
+                  >
                     Features
-                  </a>
-                  <a href="#how-it-works" className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
+                  </Link>
+
+                  <Link
+                    href="/#how-it-works"
+                    className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
+                  >
                     How It Works
-                  </a>
+                  </Link>
                   <a href="/studycourse" className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
                     Courses
                   </a>

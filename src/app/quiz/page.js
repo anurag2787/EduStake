@@ -499,7 +499,7 @@ const Quiz = ({ courseId, courseTitle, courseContent, courseTopics = [] }) => {
               repeatType: "reverse"
             }}
           >
-            Quiz Completed! 🎉 Here's Your Score
+            Quiz Completed! 🎉 Here&apos;s Your Score
           </motion.h2>
           
           <div className="flex flex-col items-center justify-center space-y-6">
