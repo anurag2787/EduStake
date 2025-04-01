@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import StarryBackground from '@/components/StarryBackground';
+import { usePathname } from 'next/navigation';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,12 +17,15 @@ const geistMono = Geist_Mono({
 });
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const showNavbar = !pathname.includes('/learncourse');
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
+        {showNavbar && <Navbar />}
         <StarryBackground />
         {children}
         <Footer />

@@ -8,6 +8,7 @@ import { SiCplusplus, SiHtml5, SiJavascript } from "react-icons/si";
 import { GiMoneyStack } from "react-icons/gi";
 import { MdBusinessCenter, MdOutlineAnalytics } from "react-icons/md";
 import { SiC } from "react-icons/si";
+import { redirect } from 'next/navigation';
 
 // Sample course data
 const courseCategories = [
@@ -169,6 +170,10 @@ export default function CourseSelectionPage() {
   const [selectedFilter, setSelectedFilter] = useState('popularity');
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const handlelearning = () =>{
+    redirect('/learncourse');
+  }
 
   const filteredCourses = courseCategories
     .find(category => category.id === activeCategory)
@@ -445,6 +450,7 @@ export default function CourseSelectionPage() {
                       boxShadow: "0 0 15px rgba(37, 99, 235, 0.7)",
                     }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={handlelearning}
                   >
                     Start Learning
                     <ChevronRight className="ml-2" />

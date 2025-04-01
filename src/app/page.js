@@ -4,8 +4,6 @@ import HeroSection from '@/components/HeroSection';
 import Showcase from '@/components/Showcase';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import CTASection from '@/components/CTASection';
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
 import ScrollBanner from '@/components/ScrollBanner';
 
 // CSS for the animations

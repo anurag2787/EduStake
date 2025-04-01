@@ -1,0 +1,186 @@
+{
+    "c-programming": {
+      "id": "c-programming",
+      "title": "C Programming",
+      "description": "Learn the fundamentals of C programming language",
+      "videos": [
+        {
+          "id": "video1",
+          "title": "Introduction to C Programming",
+          "videoId": "KJgsSFOSQv0",
+          "duration": "3:46",
+          "completed": false,
+          "description": "Learn the basics of C programming language, including syntax, data types, and your first program."
+        },
+        {
+          "id": "video2",
+          "title": "Variables and Data Types",
+          "videoId": "zuegQmMdy8M",
+          "duration": "7:28",
+          "completed": false,
+          "description": "Understand variables, data types, and memory allocation in C."
+        },
+        {
+          "id": "video3",
+          "title": "Control Structures - If Statements",
+          "videoId": "qMlnFwYdqIw",
+          "duration": "5:12",
+          "completed": false,
+          "description": "Learn about conditional statements and how to control program flow."
+        },
+        {
+          "id": "video4",
+          "title": "Loops in C",
+          "videoId": "WgS_SF1VrEk",
+          "duration": "8:54",
+          "completed": false,
+          "description": "Master for loops, while loops, and do-while loops for iterative operations."
+        },
+        {
+          "id": "video5",
+          "title": "Functions in C",
+          "videoId": "IbhBJbdXGjw",
+          "duration": "10:22",
+          "completed": false,
+          "description": "Learn how to define and use functions to organize your code."
+        },
+        {
+          "id": "video6",
+          "title": "Arrays and Strings",
+          "videoId": "6Zl8gFPWHfc",
+          "duration": "12:05",
+          "completed": false,
+          "description": "Understand how to work with collections of data using arrays and strings."
+        },
+        {
+          "id": "video7",
+          "title": "Pointers in C",
+          "videoId": "MIL2BK02V_A",
+          "duration": "15:30",
+          "completed": false,
+          "description": "Get to know one of C's most powerful features: pointers and memory management."
+        },
+        {
+          "id": "video8",
+          "title": "Structures and Unions",
+          "videoId": "6gg9Xlv35-I",
+          "duration": "9:45",
+          "completed": false,
+          "description": "Learn how to create custom data types using structures and unions."
+        },
+        {
+          "id": "video9",
+          "title": "File Handling in C",
+          "videoId": "MQIF-WIEQGE",
+          "duration": "11:18",
+          "completed": false,
+          "description": "Understand how to read from and write to files in C."
+        },
+        {
+          "id": "video10",
+          "title": "Dynamic Memory Allocation",
+          "videoId": "R0qIYWo8igs",
+          "duration": "8:33",
+          "completed": false,
+          "description": "Master malloc(), calloc(), realloc(), and free() functions for dynamic memory."
+        }
+      ],
+      "progress": 0,
+      "overallQuiz": {
+        "id": "overall-quiz",
+        "title": "C Programming Comprehensive Assessment",
+        "questions": 25,
+        "duration": "45 minutes",
+        "completed": false,
+        "description": "Test your knowledge of all C programming concepts covered in this course."
+      }
+    },
+    "python-basics": {
+      "id": "python-basics",
+      "title": "Python Basics",
+      "description": "Start your programming journey with Python",
+      "videos": [
+        {
+          "id": "video1",
+          "title": "Introduction to Python",
+          "videoId": "_uQrJ0TkZlc",
+          "duration": "6:14",
+          "completed": false,
+          "description": "Learn what Python is and why it's one of the most popular programming languages."
+        },
+        {
+          "id": "video2",
+          "title": "Installing Python and First Steps",
+          "videoId": "YYXdXT2l-Gg",
+          "duration": "8:19",
+          "completed": false,
+          "description": "Set up your development environment and write your first Python program."
+        },
+        {
+          "id": "video3",
+          "title": "Variables and Data Types",
+          "videoId": "khKv-8q7YmY",
+          "duration": "10:42",
+          "completed": false,
+          "description": "Learn about strings, numbers, lists, and other Python data types."
+        },
+        {
+          "id": "video4",
+          "title": "Control Flow with If-Else",
+          "videoId": "DZwmZ8Usvnk",
+          "duration": "7:35",
+          "completed": false,
+          "description": "Make decisions in your code with conditional statements."
+        },
+        {
+          "id": "video5",
+          "title": "Loops in Python",
+          "videoId": "6iF8Xb7Z3wQ",
+          "duration": "9:28",
+          "completed": false,
+          "description": "Use for and while loops to iterate through data and repeat actions."
+        },
+        {
+          "id": "video6",
+          "title": "Functions and Parameters",
+          "videoId": "9Os0o3wzS_I",
+          "duration": "11:15",
+          "completed": false,
+          "description": "Create reusable blocks of code with Python functions."
+        },
+        {
+          "id": "video7",
+          "title": "Lists and Dictionaries",
+          "videoId": "W8KRzm-HUcc",
+          "duration": "13:07",
+          "completed": false,
+          "description": "Work with complex data structures to organize your information."
+        },
+        {
+          "id": "video8",
+          "title": "Working with Files",
+          "videoId": "Uh2ebFW8OYM",
+          "duration": "8:52",
+          "completed": false,
+          "description": "Read from and write to files using Python."
+        },
+        {
+          "id": "video9",
+          "title": "Exception Handling",
+          "videoId": "NIWwJbo-9_8",
+          "duration": "7:19",
+          "completed": false,
+          "description": "Understand how to handle errors gracefully in your programs."
+        }
+      ],
+      "progress": 0,
+      "overallQuiz": {
+        "id": "overall-quiz",
+        "title": "Python Fundamentals Assessment",
+        "questions": 30,
+        "duration": "50 minutes",
+        "completed": false,
+        "description": "Comprehensive test covering all Python basics from this course."
+      }
+    }
+  }
