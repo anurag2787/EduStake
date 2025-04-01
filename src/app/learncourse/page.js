@@ -9,8 +9,9 @@ import courseData from '../../assets/ccourseData.json';
 
 export default function LearnCoursePage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const courseId = searchParams.get('courseId') || "c-programming";
+//   const searchParams = useSearchParams();
+//   const courseId = searchParams.get('courseId') || "c-programming";
+  const courseId ="c-programming";
   
   const [course, setCourse] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
