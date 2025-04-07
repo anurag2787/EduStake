@@ -1,841 +1,1148 @@
 {
-    "c-programming": {
-      "id": "c-programming",
-      "title": "C Programming",
-      "description": "Learn the fundamentals of C programming language",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to C Programming",
-          "videoId": "KJgsSFOSQv0",
-          "duration": "3:46",
-          "completed": false,
-          "description": "Learn the basics of C programming language, including syntax, data types, and your first program."
-        },
-        {
-          "id": "video2",
-          "title": "Variables and Data Types",
-          "videoId": "zuegQmMdy8M",
-          "duration": "7:28",
-          "completed": false,
-          "description": "Understand variables, data types, and memory allocation in C."
-        },
-        {
-          "id": "video3",
-          "title": "Control Structures - If Statements",
-          "videoId": "qMlnFwYdqIw",
-          "duration": "5:12",
-          "completed": false,
-          "description": "Learn about conditional statements and how to control program flow."
-        },
-        {
-          "id": "video4",
-          "title": "Loops in C",
-          "videoId": "WgS_SF1VrEk",
-          "duration": "8:54",
-          "completed": false,
-          "description": "Master for loops, while loops, and do-while loops for iterative operations."
-        },
-        {
-          "id": "video5",
-          "title": "Functions in C",
-          "videoId": "IbhBJbdXGjw",
-          "duration": "10:22",
-          "completed": false,
-          "description": "Learn how to define and use functions to organize your code."
-        },
-        {
-          "id": "video6",
-          "title": "Arrays and Strings",
-          "videoId": "6Zl8gFPWHfc",
-          "duration": "12:05",
-          "completed": false,
-          "description": "Understand how to work with collections of data using arrays and strings."
-        },
-        {
-          "id": "video7",
-          "title": "Pointers in C",
-          "videoId": "MIL2BK02V_A",
-          "duration": "15:30",
-          "completed": false,
-          "description": "Get to know one of C's most powerful features: pointers and memory management."
-        },
-        {
-          "id": "video8",
-          "title": "Structures and Unions",
-          "videoId": "6gg9Xlv35-I",
-          "duration": "9:45",
-          "completed": false,
-          "description": "Learn how to create custom data types using structures and unions."
-        },
-        {
-          "id": "video9",
-          "title": "File Handling in C",
-          "videoId": "MQIF-WIEQGE",
-          "duration": "11:18",
-          "completed": false,
-          "description": "Understand how to read from and write to files in C."
-        },
-        {
-          "id": "video10",
-          "title": "Dynamic Memory Allocation",
-          "videoId": "R0qIYWo8igs",
-          "duration": "8:33",
-          "completed": false,
-          "description": "Master malloc(), calloc(), realloc(), and free() functions for dynamic memory."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "C Programming Comprehensive Assessment",
-        "questions": 25,
-        "duration": "45 minutes",
+  "c-programming": {
+    "id": "c-programming",
+    "title": "C Programming",
+    "description": "Learn the fundamentals of C programming language",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to C Programming",
+        "videoId": "KJgsSFOSQv0",
+        "duration": "3:46",
         "completed": false,
-        "description": "Test your knowledge of all C programming concepts covered in this course."
-      }
-    },
-    
-    "python-basics": {
-      "id": "python-basics",
-      "title": "Python Basics",
-      "description": "Start your programming journey with Python",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to Python",
-          "videoId": "_uQrJ0TkZlc",
-          "duration": "6:14",
-          "completed": false,
-          "description": "Learn what Python is and why it's one of the most popular programming languages."
-        },
-        {
-          "id": "video2",
-          "title": "Installing Python and First Steps",
-          "videoId": "YYXdXT2l-Gg",
-          "duration": "8:19",
-          "completed": false,
-          "description": "Set up your development environment and write your first Python program."
-        },
-        {
-          "id": "video3",
-          "title": "Variables and Data Types",
-          "videoId": "khKv-8q7YmY",
-          "duration": "10:42",
-          "completed": false,
-          "description": "Learn about strings, numbers, lists, and other Python data types."
-        },
-        {
-          "id": "video4",
-          "title": "Control Flow with If-Else",
-          "videoId": "DZwmZ8Usvnk",
-          "duration": "7:35",
-          "completed": false,
-          "description": "Make decisions in your code with conditional statements."
-        },
-        {
-          "id": "video5",
-          "title": "Loops in Python",
-          "videoId": "6iF8Xb7Z3wQ",
-          "duration": "9:28",
-          "completed": false,
-          "description": "Use for and while loops to iterate through data and repeat actions."
-        },
-        {
-          "id": "video6",
-          "title": "Functions and Parameters",
-          "videoId": "9Os0o3wzS_I",
-          "duration": "11:15",
-          "completed": false,
-          "description": "Create reusable blocks of code with Python functions."
-        },
-        {
-          "id": "video7",
-          "title": "Lists and Dictionaries",
-          "videoId": "W8KRzm-HUcc",
-          "duration": "13:07",
-          "completed": false,
-          "description": "Work with complex data structures to organize your information."
-        },
-        {
-          "id": "video8",
-          "title": "Working with Files",
-          "videoId": "Uh2ebFW8OYM",
-          "duration": "8:52",
-          "completed": false,
-          "description": "Read from and write to files using Python."
-        },
-        {
-          "id": "video9",
-          "title": "Exception Handling",
-          "videoId": "NIWwJbo-9_8",
-          "duration": "7:19",
-          "completed": false,
-          "description": "Understand how to handle errors gracefully in your programs."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "Python Fundamentals Assessment",
-        "questions": 30,
-        "duration": "50 minutes",
+        "description": "Learn the basics of C programming language, including syntax, data types, and your first program."
+      },
+      {
+        "id": "video2",
+        "title": "Variables and Data Types",
+        "videoId": "zuegQmMdy8M",
+        "duration": "7:28",
         "completed": false,
-        "description": "Comprehensive test covering all Python basics from this course."
-      }
-    },
-    
-    "cpp": {
-      "id": "cpp",
-      "title": "C++ Programming",
-      "description": "Object-oriented programming with C++",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to C++",
-          "videoId": "1v_4dL8l8pQ",
-          "duration": "5:23",
-          "completed": false,
-          "description": "Learn the fundamentals of C++ and how it differs from C."
-        },
-        {
-          "id": "video2",
-          "title": "Basic Syntax and Variables",
-          "videoId": "mUQZ1qmKlLY",
-          "duration": "8:42",
-          "completed": false,
-          "description": "Understand C++ syntax, data types, and variable declarations."
-        },
-        {
-          "id": "video3",
-          "title": "Functions and Overloading",
-          "videoId": "PxnODlHHKyY",
-          "duration": "9:15",
-          "completed": false,
-          "description": "Learn how to create functions and use function overloading in C++."
-        },
-        {
-          "id": "video4",
-          "title": "Classes and Objects",
-          "videoId": "2BP8NhxjrO0",
-          "duration": "12:37",
-          "completed": false,
-          "description": "Master object-oriented programming concepts with classes and objects."
-        },
-        {
-          "id": "video5",
-          "title": "Constructors and Destructors",
-          "videoId": "0R-KUholGWw",
-          "duration": "10:18",
-          "completed": false,
-          "description": "Understand how to initialize and clean up objects in C++."
-        },
-        {
-          "id": "video6",
-          "title": "Inheritance and Polymorphism",
-          "videoId": "zsq6p37nFqE",
-          "duration": "14:24",
-          "completed": false,
-          "description": "Learn about inheritance hierarchies and polymorphic behavior in C++."
-        },
-        {
-          "id": "video7",
-          "title": "Templates and Generic Programming",
-          "videoId": "I-hZkUa9mIs",
-          "duration": "11:53",
-          "completed": false,
-          "description": "Discover how to write flexible, reusable code with templates."
-        },
-        {
-          "id": "video8",
-          "title": "Standard Template Library (STL)",
-          "videoId": "LyGlTmaWEPs",
-          "duration": "15:42",
-          "completed": false,
-          "description": "Master the powerful collection of containers and algorithms in the STL."
-        },
-        {
-          "id": "video9",
-          "title": "Exception Handling",
-          "videoId": "kjEhJ2D0vEA",
-          "duration": "8:05",
-          "completed": false,
-          "description": "Learn how to handle errors and exceptions in C++ programs."
-        },
-        {
-          "id": "video10",
-          "title": "Modern C++ Features",
-          "videoId": "TJHgp1ugKGM",
-          "duration": "13:27",
-          "completed": false,
-          "description": "Explore the new features in modern C++ standards (C++11, C++14, C++17)."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "C++ Programming Mastery Assessment",
-        "questions": 35,
-        "duration": "60 minutes",
+        "description": "Understand variables, data types, and memory allocation in C."
+      },
+      {
+        "id": "video3",
+        "title": "Control Structures - If Statements",
+        "videoId": "qMlnFwYdqIw",
+        "duration": "5:12",
         "completed": false,
-        "description": "Comprehensive test covering all C++ programming concepts from basics to advanced topics."
-      }
-    },
-    
-    "java": {
-      "id": "java",
-      "title": "Java",
-      "description": "Platform-independent programming with Java",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to Java",
-          "videoId": "eIrMbAQSU34",
-          "duration": "7:15",
-          "completed": false,
-          "description": "Learn about Java, its history, and why it's used for cross-platform development."
-        },
-        {
-          "id": "video2",
-          "title": "Setting Up Java Development Environment",
-          "videoId": "grEKMHGYyns",
-          "duration": "9:33",
-          "completed": false,
-          "description": "Install JDK, set up your IDE, and write your first Java program."
-        },
-        {
-          "id": "video3",
-          "title": "Java Syntax and Variables",
-          "videoId": "rnFZ8DW8Ge8",
-          "duration": "11:26",
-          "completed": false,
-          "description": "Master Java syntax, data types, and variable declarations."
-        },
-        {
-          "id": "video4",
-          "title": "Control Flow in Java",
-          "videoId": "P4V0gXd2LG8",
-          "duration": "8:52",
-          "completed": false,
-          "description": "Learn about conditional statements and loops in Java."
-        },
-        {
-          "id": "video5",
-          "title": "Classes and Objects",
-          "videoId": "OmXpPG5mCVg",
-          "duration": "13:47",
-          "completed": false,
-          "description": "Understand object-oriented programming concepts in Java."
-        },
-        {
-          "id": "video6",
-          "title": "Inheritance and Interfaces",
-          "videoId": "Ljhpj_SX_OY",
-          "duration": "14:29",
-          "completed": false,
-          "description": "Learn how to extend classes and implement interfaces in Java."
-        },
-        {
-          "id": "video7",
-          "title": "Exception Handling",
-          "videoId": "W-N2ltgU-X4",
-          "duration": "10:14",
-          "completed": false,
-          "description": "Master try-catch blocks and exception hierarchies in Java."
-        },
-        {
-          "id": "video8",
-          "title": "Collections Framework",
-          "videoId": "jU5ACV5MXec",
-          "duration": "15:36",
-          "completed": false,
-          "description": "Explore Lists, Sets, Maps, and other collection classes in Java."
-        },
-        {
-          "id": "video9",
-          "title": "Java I/O and File Handling",
-          "videoId": "oq4XZS6mqjs",
-          "duration": "12:23",
-          "completed": false,
-          "description": "Learn how to read and write files in Java."
-        },
-        {
-          "id": "video10",
-          "title": "Introduction to GUI with Swing",
-          "videoId": "5o3fMLPY7qY",
-          "duration": "16:42",
-          "completed": false,
-          "description": "Create simple graphical user interfaces using Java Swing."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "Java Programming Comprehensive Assessment",
-        "questions": 40,
-        "duration": "75 minutes",
+        "description": "Learn about conditional statements and how to control program flow."
+      },
+      {
+        "id": "video4",
+        "title": "Loops in C",
+        "videoId": "WgS_SF1VrEk",
+        "duration": "8:54",
         "completed": false,
-        "description": "Test your knowledge of Java programming concepts from fundamentals to GUI development."
-      }
-    },
-    
-    "web-dev": {
-      "id": "web-dev",
-      "title": "Web Development",
-      "description": "Build responsive websites with HTML, CSS, and JavaScript",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to Web Development",
-          "videoId": "pQN-pnXPaVg",
-          "duration": "6:18",
-          "completed": false,
-          "description": "Understand the fundamentals of how websites work and web development basics."
-        },
-        {
-          "id": "video2",
-          "title": "HTML Fundamentals",
-          "videoId": "qz0aGYrrlhU",
-          "duration": "10:42",
-          "completed": false,
-          "description": "Learn HTML tags, elements, and document structure."
-        },
-        {
-          "id": "video3",
-          "title": "CSS Basics",
-          "videoId": "yfoY53QXEnI",
-          "duration": "12:15",
-          "completed": false,
-          "description": "Style your HTML with CSS selectors, properties, and values."
-        },
-        {
-          "id": "video4",
-          "title": "CSS Layout and Flexbox",
-          "videoId": "JJSoEo8JSnc",
-          "duration": "13:26",
-          "completed": false,
-          "description": "Master modern CSS layout techniques with Flexbox."
-        },
-        {
-          "id": "video5",
-          "title": "CSS Grid",
-          "videoId": "jV8B24rSN5o",
-          "duration": "11:38",
-          "completed": false,
-          "description": "Create complex layouts with CSS Grid layout system."
-        },
-        {
-          "id": "video6",
-          "title": "Responsive Web Design",
-          "videoId": "srvUrASNj0s",
-          "duration": "9:47",
-          "completed": false,
-          "description": "Make your websites adapt to different screen sizes with media queries."
-        },
-        {
-          "id": "video7",
-          "title": "JavaScript Basics",
-          "videoId": "hdI2bqOjy3c",
-          "duration": "15:33",
-          "completed": false,
-          "description": "Learn JavaScript syntax, variables, and control flow."
-        },
-        {
-          "id": "video8",
-          "title": "DOM Manipulation",
-          "videoId": "0ik6X4DJKCc",
-          "duration": "14:22",
-          "completed": false,
-          "description": "Interact with HTML elements using JavaScript and the DOM API."
-        },
-        {
-          "id": "video9",
-          "title": "Events and Event Handling",
-          "videoId": "e57ReoUn6kM",
-          "duration": "10:54",
-          "completed": false,
-          "description": "Respond to user interactions with JavaScript event handlers."
-        },
-        {
-          "id": "video10",
-          "title": "Building a Complete Project",
-          "videoId": "3PHXvlpOkf4",
-          "duration": "17:26",
-          "completed": false,
-          "description": "Put everything together by building a complete responsive website."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "Web Development Assessment",
-        "questions": 35,
-        "duration": "60 minutes",
+        "description": "Master for loops, while loops, and do-while loops for iterative operations."
+      },
+      {
+        "id": "video5",
+        "title": "Functions in C",
+        "videoId": "IbhBJbdXGjw",
+        "duration": "10:22",
         "completed": false,
-        "description": "Test your knowledge of HTML, CSS, and JavaScript for modern web development."
-      }
-    },
-    
-    "react": {
-      "id": "react",
-      "title": "React.js",
-      "description": "Build modern user interfaces with React",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to React",
-          "videoId": "w7ejDZ8SWv8",
-          "duration": "7:26",
-          "completed": false,
-          "description": "Learn what React is and why it's popular for building modern web applications."
-        },
-        {
-          "id": "video2",
-          "title": "Setting Up React Environment",
-          "videoId": "Ke90Tje7VS0",
-          "duration": "9:14",
-          "completed": false,
-          "description": "Install Node.js, npm, and create your first React application."
-        },
-        {
-          "id": "video3",
-          "title": "JSX and React Components",
-          "videoId": "pgAvVxYwaog",
-          "duration": "11:38",
-          "completed": false,
-          "description": "Understand JSX syntax and how to create React components."
-        },
-        {
-          "id": "video4",
-          "title": "Props and State",
-          "videoId": "4ORZ1GmjaMc",
-          "duration": "13:42",
-          "completed": false,
-          "description": "Learn about component props and state management in React."
-        },
-        {
-          "id": "video5",
-          "title": "React Hooks - useState",
-          "videoId": "O6P86uwfdR0",
-          "duration": "12:15",
-          "completed": false,
-          "description": "Master the useState hook for state management in functional components."
-        },
-        {
-          "id": "video6",
-          "title": "React Hooks - useEffect",
-          "videoId": "0ZJgIjIuY7U",
-          "duration": "14:23",
-          "completed": false,
-          "description": "Handle side effects in your components with the useEffect hook."
-        },
-        {
-          "id": "video7",
-          "title": "React Router",
-          "videoId": "Law7wfdg_ls",
-          "duration": "15:47",
-          "completed": false,
-          "description": "Implement client-side routing in your React applications."
-        },
-        {
-          "id": "video8",
-          "title": "Forms and Controlled Components",
-          "videoId": "7Vo_VCcWn1c",
-          "duration": "11:36",
-          "completed": false,
-          "description": "Handle form inputs and validation in React applications."
-        },
-        {
-          "id": "video9",
-          "title": "Context API",
-          "videoId": "35lXWvCuM8o",
-          "duration": "13:59",
-          "completed": false,
-          "description": "Share state across components without prop drilling using Context API."
-        },
-        {
-          "id": "video10",
-          "title": "Building a Complete React Application",
-          "videoId": "RVFAyFWO4go",
-          "duration": "18:24",
-          "completed": false,
-          "description": "Put everything together by building a complete React application."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "React.js Comprehensive Assessment",
-        "questions": 30,
-        "duration": "55 minutes",
+        "description": "Learn how to define and use functions to organize your code."
+      },
+      {
+        "id": "video6",
+        "title": "Arrays and Strings",
+        "videoId": "6Zl8gFPWHfc",
+        "duration": "12:05",
         "completed": false,
-        "description": "Test your knowledge of React components, hooks, routing, and state management."
-      }
-    },
-    
-    "entrepreneurship": {
-      "id": "entrepreneurship",
-      "title": "Entrepreneurship",
-      "description": "Learn how to launch and grow your business",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to Entrepreneurship",
-          "videoId": "UPm9bGFW_wA",
-          "duration": "8:24",
-          "completed": false,
-          "description": "Understand what entrepreneurship is and the mindset required to succeed."
-        },
-        {
-          "id": "video2",
-          "title": "Identifying Business Opportunities",
-          "videoId": "1dCCxLvwAQk",
-          "duration": "11:36",
-          "completed": false,
-          "description": "Learn how to spot and validate business opportunities in the market."
-        },
-        {
-          "id": "video3",
-          "title": "Business Model Canvas",
-          "videoId": "QoAOzMTLP5s",
-          "duration": "14:22",
-          "completed": false,
-          "description": "Use the Business Model Canvas to structure and visualize your business idea."
-        },
-        {
-          "id": "video4",
-          "title": "Market Research and Validation",
-          "videoId": "rZgHGuwBUl4",
-          "duration": "12:47",
-          "completed": false,
-          "description": "Techniques for researching your market and validating your business concept."
-        },
-        {
-          "id": "video5",
-          "title": "Creating a Business Plan",
-          "videoId": "Fqch5OrUPvA",
-          "duration": "15:38",
-          "completed": false,
-          "description": "Develop a comprehensive business plan to guide your venture."
-        },
-        {
-          "id": "video6",
-          "title": "Funding Strategies",
-          "videoId": "677ZtSMr4-4",
-          "duration": "16:42",
-          "completed": false,
-          "description": "Explore different ways to fund your startup, from bootstrapping to venture capital."
-        },
-        {
-          "id": "video7",
-          "title": "Building Your Team",
-          "videoId": "1aTFqJ5W2a8",
-          "duration": "13:15",
-          "completed": false,
-          "description": "Learn how to recruit, manage, and lead a successful startup team."
-        },
-        {
-          "id": "video8",
-          "title": "Legal and Accounting Basics",
-          "videoId": "xyMkP4Kn36w",
-          "duration": "11:53",
-          "completed": false,
-          "description": "Understand the legal and financial foundations of your business."
-        },
-        {
-          "id": "video9",
-          "title": "Marketing and Customer Acquisition",
-          "videoId": "MdtZYvWXdAg",
-          "duration": "14:28",
-          "completed": false,
-          "description": "Develop strategies to reach and acquire your first customers."
-        },
-        {
-          "id": "video10",
-          "title": "Growth Strategies and Scaling",
-          "videoId": "5n32bNh9tjA",
-          "duration": "17:36",
-          "completed": false,
-          "description": "Learn how to scale your business and manage growth effectively."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "Entrepreneurship Mastery Assessment",
-        "questions": 45,
-        "duration": "90 minutes",
+        "description": "Understand how to work with collections of data using arrays and strings."
+      },
+      {
+        "id": "video7",
+        "title": "Pointers in C",
+        "videoId": "MIL2BK02V_A",
+        "duration": "15:30",
         "completed": false,
-        "description": "Comprehensive test covering all aspects of launching and growing a successful business."
-      }
-    },
-    
-    "marketing-basics": {
-      "id": "marketing-basics",
-      "title": "Marketing Basics",
-      "description": "Learn fundamental marketing principles and strategies",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to Marketing",
-          "videoId": "ZoZHd4zYkgI",
-          "duration": "7:15",
-          "completed": false,
-          "description": "Understand the core concepts and importance of marketing for businesses."
-        },
-        {
-          "id": "video2",
-          "title": "Market Research and Analysis",
-          "videoId": "phTz5lkkrKE",
-          "duration": "10:42",
-          "completed": false,
-          "description": "Learn how to research and analyze markets, competitors, and customers."
-        },
-        {
-          "id": "video3",
-          "title": "Target Audience and Segmentation",
-          "videoId": "SU91cS_PmMw",
-          "duration": "12:37",
-          "completed": false,
-          "description": "Identify and segment your target audience for effective marketing."
-        },
-        {
-          "id": "video4",
-          "title": "Branding Fundamentals",
-          "videoId": "zLYoN9kuYJ0",
-          "duration": "11:28",
-          "completed": false,
-          "description": "Develop a strong brand identity and positioning strategy."
-        },
-        {
-          "id": "video5",
-          "title": "The Marketing Mix (4Ps)",
-          "videoId": "Mco8vhAqFXI",
-          "duration": "13:46",
-          "completed": false,
-          "description": "Master the 4Ps of marketing: Product, Price, Place, and Promotion."
-        },
-        {
-          "id": "video6",
-          "title": "Content Marketing",
-          "videoId": "Ti_QF_j-6-k",
-          "duration": "14:23",
-          "completed": false,
-          "description": "Create valuable content to attract and engage your target audience."
-        },
-        {
-          "id": "video7",
-          "title": "Social Media Marketing",
-          "videoId": "fDhkIHWQOLY",
-          "duration": "15:37",
-          "completed": false,
-          "description": "Leverage social media platforms for marketing your business."
-        },
-        {
-          "id": "video8",
-          "title": "Email Marketing",
-          "videoId": "-YvcRNTjmQY",
-          "duration": "9:42",
-          "completed": false,
-          "description": "Build effective email marketing campaigns to nurture leads and customers."
-        },
-        {
-          "id": "video9",
-          "title": "Marketing Analytics",
-          "videoId": "exAkT1Q8KV0",
-          "duration": "12:15",
-          "completed": false,
-          "description": "Measure and analyze the performance of your marketing efforts."
-        },
-        {
-          "id": "video10",
-          "title": "Creating a Marketing Plan",
-          "videoId": "DdCv0oXEfP4",
-          "duration": "16:28",
-          "completed": false,
-          "description": "Develop a comprehensive marketing plan for your business."
-        }
-      ],
-      "progress": 0,
-      "overallQuiz": {
-        "id": "overall-quiz",
-        "title": "Marketing Fundamentals Assessment",
-        "questions": 35,
-        "duration": "60 minutes",
+        "description": "Get to know one of C's most powerful features: pointers and memory management."
+      },
+      {
+        "id": "video8",
+        "title": "Structures and Unions",
+        "videoId": "6gg9Xlv35-I",
+        "duration": "9:45",
         "completed": false,
-        "description": "Test your knowledge of marketing principles, strategies, and tactics."
+        "description": "Learn how to create custom data types using structures and unions."
+      },
+      {
+        "id": "video9",
+        "title": "File Handling in C",
+        "videoId": "MQIF-WIEQGE",
+        "duration": "11:18",
+        "completed": false,
+        "description": "Understand how to read from and write to files in C."
+      },
+      {
+        "id": "video10",
+        "title": "Dynamic Memory Allocation",
+        "videoId": "R0qIYWo8igs",
+        "duration": "8:33",
+        "completed": false,
+        "description": "Master malloc(), calloc(), realloc(), and free() functions for dynamic memory."
       }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "C Programming Comprehensive Assessment",
+      "questions": 25,
+      "duration": "45 minutes",
+      "completed": false,
+      "description": "Test your knowledge of all C programming concepts covered in this course."
+    }
+  },
+  "python-basics": {
+    "id": "python-basics",
+    "title": "Python Basics",
+    "description": "Start your programming journey with Python",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Python",
+        "videoId": "_uQrJ0TkZlc",
+        "duration": "6:14",
+        "completed": false,
+        "description": "Learn what Python is and why it's one of the most popular programming languages."
+      },
+      {
+        "id": "video2",
+        "title": "Installing Python and First Steps",
+        "videoId": "YYXdXT2l-Gg",
+        "duration": "8:19",
+        "completed": false,
+        "description": "Set up your development environment and write your first Python program."
+      },
+      {
+        "id": "video3",
+        "title": "Variables and Data Types",
+        "videoId": "khKv-8q7YmY",
+        "duration": "10:42",
+        "completed": false,
+        "description": "Learn about strings, numbers, lists, and other Python data types."
+      },
+      {
+        "id": "video4",
+        "title": "Control Flow with If-Else",
+        "videoId": "DZwmZ8Usvnk",
+        "duration": "7:35",
+        "completed": false,
+        "description": "Make decisions in your code with conditional statements."
+      },
+      {
+        "id": "video5",
+        "title": "Loops in Python",
+        "videoId": "6iF8Xb7Z3wQ",
+        "duration": "9:28",
+        "completed": false,
+        "description": "Use for and while loops to iterate through data and repeat actions."
+      },
+      {
+        "id": "video6",
+        "title": "Functions and Parameters",
+        "videoId": "9Os0o3wzS_I",
+        "duration": "11:15",
+        "completed": false,
+        "description": "Create reusable blocks of code with Python functions."
+      },
+      {
+        "id": "video7",
+        "title": "Lists and Dictionaries",
+        "videoId": "W8KRzm-HUcc",
+        "duration": "13:07",
+        "completed": false,
+        "description": "Work with complex data structures to organize your information."
+      },
+      {
+        "id": "video8",
+        "title": "Working with Files",
+        "videoId": "Uh2ebFW8OYM",
+        "duration": "8:52",
+        "completed": false,
+        "description": "Read from and write to files using Python."
+      },
+      {
+        "id": "video9",
+        "title": "Exception Handling",
+        "videoId": "NIWwJbo-9_8",
+        "duration": "7:19",
+        "completed": false,
+        "description": "Understand how to handle errors gracefully in your programs."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Python Fundamentals Assessment",
+      "questions": 30,
+      "duration": "50 minutes",
+      "completed": false,
+      "description": "Comprehensive test covering all Python basics from this course."
+    }
+  },
+  "cpp": {
+    "id": "cpp",
+    "title": "C++ Programming",
+    "description": "Object-oriented programming with C++",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to C++",
+        "videoId": "1v_4dL8l8pQ",
+        "duration": "5:23",
+        "completed": false,
+        "description": "Learn the fundamentals of C++ and how it differs from C."
+      },
+      {
+        "id": "video2",
+        "title": "Basic Syntax and Variables",
+        "videoId": "mUQZ1qmKlLY",
+        "duration": "8:42",
+        "completed": false,
+        "description": "Understand C++ syntax, data types, and variable declarations."
+      },
+      {
+        "id": "video3",
+        "title": "Functions and Overloading",
+        "videoId": "PxnODlHHKyY",
+        "duration": "9:15",
+        "completed": false,
+        "description": "Learn how to create functions and use function overloading in C++."
+      },
+      {
+        "id": "video4",
+        "title": "Classes and Objects",
+        "videoId": "2BP8NhxjrO0",
+        "duration": "12:37",
+        "completed": false,
+        "description": "Master object-oriented programming concepts with classes and objects."
+      },
+      {
+        "id": "video5",
+        "title": "Constructors and Destructors",
+        "videoId": "0R-KUholGWw",
+        "duration": "10:18",
+        "completed": false,
+        "description": "Understand how to initialize and clean up objects in C++."
+      },
+      {
+        "id": "video6",
+        "title": "Inheritance and Polymorphism",
+        "videoId": "zsq6p37nFqE",
+        "duration": "14:24",
+        "completed": false,
+        "description": "Learn about inheritance hierarchies and polymorphic behavior in C++."
+      },
+      {
+        "id": "video7",
+        "title": "Templates and Generic Programming",
+        "videoId": "I-hZkUa9mIs",
+        "duration": "11:53",
+        "completed": false,
+        "description": "Discover how to write flexible, reusable code with templates."
+      },
+      {
+        "id": "video8",
+        "title": "Standard Template Library (STL)",
+        "videoId": "LyGlTmaWEPs",
+        "duration": "15:42",
+        "completed": false,
+        "description": "Master the powerful collection of containers and algorithms in the STL."
+      },
+      {
+        "id": "video9",
+        "title": "Exception Handling",
+        "videoId": "kjEhJ2D0vEA",
+        "duration": "8:05",
+        "completed": false,
+        "description": "Learn how to handle errors and exceptions in C++ programs."
+      },
+      {
+        "id": "video10",
+        "title": "Modern C++ Features",
+        "videoId": "TJHgp1ugKGM",
+        "duration": "13:27",
+        "completed": false,
+        "description": "Explore the new features in modern C++ standards (C++11, C++14, C++17)."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "C++ Programming Mastery Assessment",
+      "questions": 35,
+      "duration": "60 minutes",
+      "completed": false,
+      "description": "Comprehensive test covering all C++ programming concepts from basics to advanced topics."
+    }
+  },
+  "java": {
+    "id": "java",
+    "title": "Java",
+    "description": "Platform-independent programming with Java",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Java",
+        "videoId": "eIrMbAQSU34",
+        "duration": "7:15",
+        "completed": false,
+        "description": "Learn about Java, its history, and why it's used for cross-platform development."
+      },
+      {
+        "id": "video2",
+        "title": "Setting Up Java Development Environment",
+        "videoId": "grEKMHGYyns",
+        "duration": "9:33",
+        "completed": false,
+        "description": "Install JDK, set up your IDE, and write your first Java program."
+      },
+      {
+        "id": "video3",
+        "title": "Java Syntax and Variables",
+        "videoId": "rnFZ8DW8Ge8",
+        "duration": "11:26",
+        "completed": false,
+        "description": "Master Java syntax, data types, and variable declarations."
+      },
+      {
+        "id": "video4",
+        "title": "Control Flow in Java",
+        "videoId": "P4V0gXd2LG8",
+        "duration": "8:52",
+        "completed": false,
+        "description": "Learn about conditional statements and loops in Java."
+      },
+      {
+        "id": "video5",
+        "title": "Classes and Objects",
+        "videoId": "OmXpPG5mCVg",
+        "duration": "13:47",
+        "completed": false,
+        "description": "Understand object-oriented programming concepts in Java."
+      },
+      {
+        "id": "video6",
+        "title": "Inheritance and Interfaces",
+        "videoId": "Ljhpj_SX_OY",
+        "duration": "14:29",
+        "completed": false,
+        "description": "Learn how to extend classes and implement interfaces in Java."
+      },
+      {
+        "id": "video7",
+        "title": "Exception Handling",
+        "videoId": "W-N2ltgU-X4",
+        "duration": "10:14",
+        "completed": false,
+        "description": "Master try-catch blocks and exception hierarchies in Java."
+      },
+      {
+        "id": "video8",
+        "title": "Collections Framework",
+        "videoId": "jU5ACV5MXec",
+        "duration": "15:36",
+        "completed": false,
+        "description": "Explore Lists, Sets, Maps, and other collection classes in Java."
+      },
+      {
+        "id": "video9",
+        "title": "Java I/O and File Handling",
+        "videoId": "oq4XZS6mqjs",
+        "duration": "12:23",
+        "completed": false,
+        "description": "Learn how to read and write files in Java."
+      },
+      {
+        "id": "video10",
+        "title": "Introduction to GUI with Swing",
+        "videoId": "5o3fMLPY7qY",
+        "duration": "16:42",
+        "completed": false,
+        "description": "Create simple graphical user interfaces using Java Swing."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Java Programming Comprehensive Assessment",
+      "questions": 40,
+      "duration": "75 minutes",
+      "completed": false,
+      "description": "Test your knowledge of Java programming concepts from fundamentals to GUI development."
+    }
+  },
+  "web-dev": {
+    "id": "web-dev",
+    "title": "Web Development",
+    "description": "Build responsive websites with HTML, CSS, and JavaScript",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Web Development",
+        "videoId": "pQN-pnXPaVg",
+        "duration": "6:18",
+        "completed": false,
+        "description": "Understand the fundamentals of how websites work and web development basics."
+      },
+      {
+        "id": "video2",
+        "title": "HTML Fundamentals",
+        "videoId": "qz0aGYrrlhU",
+        "duration": "10:42",
+        "completed": false,
+        "description": "Learn HTML tags, elements, and document structure."
+      },
+      {
+        "id": "video3",
+        "title": "CSS Basics",
+        "videoId": "yfoY53QXEnI",
+        "duration": "12:15",
+        "completed": false,
+        "description": "Style your HTML with CSS selectors, properties, and values."
+      },
+      {
+        "id": "video4",
+        "title": "CSS Layout and Flexbox",
+        "videoId": "JJSoEo8JSnc",
+        "duration": "13:26",
+        "completed": false,
+        "description": "Master modern CSS layout techniques with Flexbox."
+      },
+      {
+        "id": "video5",
+        "title": "CSS Grid",
+        "videoId": "jV8B24rSN5o",
+        "duration": "11:38",
+        "completed": false,
+        "description": "Create complex layouts with CSS Grid layout system."
+      },
+      {
+        "id": "video6",
+        "title": "Responsive Web Design",
+        "videoId": "srvUrASNj0s",
+        "duration": "9:47",
+        "completed": false,
+        "description": "Make your websites adapt to different screen sizes with media queries."
+      },
+      {
+        "id": "video7",
+        "title": "JavaScript Basics",
+        "videoId": "hdI2bqOjy3c",
+        "duration": "15:33",
+        "completed": false,
+        "description": "Learn JavaScript syntax, variables, and control flow."
+      },
+      {
+        "id": "video8",
+        "title": "DOM Manipulation",
+        "videoId": "0ik6X4DJKCc",
+        "duration": "14:22",
+        "completed": false,
+        "description": "Interact with HTML elements using JavaScript and the DOM API."
+      },
+      {
+        "id": "video9",
+        "title": "Events and Event Handling",
+        "videoId": "e57ReoUn6kM",
+        "duration": "10:54",
+        "completed": false,
+        "description": "Respond to user interactions with JavaScript event handlers."
+      },
+      {
+        "id": "video10",
+        "title": "Building a Complete Project",
+        "videoId": "3PHXvlpOkf4",
+        "duration": "17:26",
+        "completed": false,
+        "description": "Put everything together by building a complete responsive website."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Web Development Assessment",
+      "questions": 35,
+      "duration": "60 minutes",
+      "completed": false,
+      "description": "Test your knowledge of HTML, CSS, and JavaScript for modern web development."
+    }
+  },
+  "react": {
+    "id": "react",
+    "title": "React.js",
+    "description": "Build modern user interfaces with React",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to React",
+        "videoId": "w7ejDZ8SWv8",
+        "duration": "7:26",
+        "completed": false,
+        "description": "Learn what React is and why it's popular for building modern web applications."
+      },
+      {
+        "id": "video2",
+        "title": "Setting Up React Environment",
+        "videoId": "Ke90Tje7VS0",
+        "duration": "9:14",
+        "completed": false,
+        "description": "Install Node.js, npm, and create your first React application."
+      },
+      {
+        "id": "video3",
+        "title": "JSX and React Components",
+        "videoId": "pgAvVxYwaog",
+        "duration": "11:38",
+        "completed": false,
+        "description": "Understand JSX syntax and how to create React components."
+      },
+      {
+        "id": "video4",
+        "title": "Props and State",
+        "videoId": "4ORZ1GmjaMc",
+        "duration": "13:42",
+        "completed": false,
+        "description": "Learn about component props and state management in React."
+      },
+      {
+        "id": "video5",
+        "title": "React Hooks - useState",
+        "videoId": "O6P86uwfdR0",
+        "duration": "12:15",
+        "completed": false,
+        "description": "Master the useState hook for state management in functional components."
+      },
+      {
+        "id": "video6",
+        "title": "React Hooks - useEffect",
+        "videoId": "0ZJgIjIuY7U",
+        "duration": "14:23",
+        "completed": false,
+        "description": "Handle side effects in your components with the useEffect hook."
+      },
+      {
+        "id": "video7",
+        "title": "React Router",
+        "videoId": "Law7wfdg_ls",
+        "duration": "15:47",
+        "completed": false,
+        "description": "Implement client-side routing in your React applications."
+      },
+      {
+        "id": "video8",
+        "title": "Forms and Controlled Components",
+        "videoId": "7Vo_VCcWn1c",
+        "duration": "11:36",
+        "completed": false,
+        "description": "Handle form inputs and validation in React applications."
+      },
+      {
+        "id": "video9",
+        "title": "Context API",
+        "videoId": "35lXWvCuM8o",
+        "duration": "13:59",
+        "completed": false,
+        "description": "Share state across components without prop drilling using Context API."
+      },
+      {
+        "id": "video10",
+        "title": "Building a Complete React Application",
+        "videoId": "RVFAyFWO4go",
+        "duration": "18:24",
+        "completed": false,
+        "description": "Put everything together by building a complete React application."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "React.js Comprehensive Assessment",
+      "questions": 30,
+      "duration": "55 minutes",
+      "completed": false,
+      "description": "Test your knowledge of React components, hooks, routing, and state management."
+    }
+  },
+  "entrepreneurship": {
+    "id": "entrepreneurship",
+    "title": "Entrepreneurship",
+    "description": "Learn how to launch and grow your business",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Entrepreneurship",
+        "videoId": "UPm9bGFW_wA",
+        "duration": "8:24",
+        "completed": false,
+        "description": "Understand what entrepreneurship is and the mindset required to succeed."
+      },
+      {
+        "id": "video2",
+        "title": "Identifying Business Opportunities",
+        "videoId": "1dCCxLvwAQk",
+        "duration": "11:36",
+        "completed": false,
+        "description": "Learn how to spot and validate business opportunities in the market."
+      },
+      {
+        "id": "video3",
+        "title": "Business Model Canvas",
+        "videoId": "QoAOzMTLP5s",
+        "duration": "14:22",
+        "completed": false,
+        "description": "Use the Business Model Canvas to structure and visualize your business idea."
+      },
+      {
+        "id": "video4",
+        "title": "Market Research and Validation",
+        "videoId": "rZgHGuwBUl4",
+        "duration": "12:47",
+        "completed": false,
+        "description": "Techniques for researching your market and validating your business concept."
+      },
+      {
+        "id": "video5",
+        "title": "Creating a Business Plan",
+        "videoId": "Fqch5OrUPvA",
+        "duration": "15:38",
+        "completed": false,
+        "description": "Develop a comprehensive business plan to guide your venture."
+      },
+      {
+        "id": "video6",
+        "title": "Funding Strategies",
+        "videoId": "677ZtSMr4-4",
+        "duration": "16:42",
+        "completed": false,
+        "description": "Explore different ways to fund your startup, from bootstrapping to venture capital."
+      },
+      {
+        "id": "video7",
+        "title": "Building Your Team",
+        "videoId": "1aTFqJ5W2a8",
+        "duration": "13:15",
+        "completed": false,
+        "description": "Learn how to recruit, manage, and lead a successful startup team."
+      },
+      {
+        "id": "video8",
+        "title": "Legal and Accounting Basics",
+        "videoId": "xyMkP4Kn36w",
+        "duration": "11:53",
+        "completed": false,
+        "description": "Understand the legal and financial foundations of your business."
+      },
+      {
+        "id": "video9",
+        "title": "Marketing and Customer Acquisition",
+        "videoId": "MdtZYvWXdAg",
+        "duration": "14:28",
+        "completed": false,
+        "description": "Develop strategies to reach and acquire your first customers."
+      },
+      {
+        "id": "video10",
+        "title": "Growth Strategies and Scaling",
+        "videoId": "5n32bNh9tjA",
+        "duration": "17:36",
+        "completed": false,
+        "description": "Learn how to scale your business and manage growth effectively."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Entrepreneurship Mastery Assessment",
+      "questions": 45,
+      "duration": "90 minutes",
+      "completed": false,
+      "description": "Comprehensive test covering all aspects of launching and growing a successful business."
+    }
+  },
+  "marketing-basics": {
+    "id": "marketing-basics",
+    "title": "Marketing Basics",
+    "description": "Learn fundamental marketing principles and strategies",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Marketing",
+        "videoId": "ZoZHd4zYkgI",
+        "duration": "7:15",
+        "completed": false,
+        "description": "Understand the core concepts and importance of marketing for businesses."
+      },
+      {
+        "id": "video2",
+        "title": "Market Research and Analysis",
+        "videoId": "phTz5lkkrKE",
+        "duration": "10:42",
+        "completed": false,
+        "description": "Learn how to research and analyze markets, competitors, and customers."
+      },
+      {
+        "id": "video3",
+        "title": "Target Audience and Segmentation",
+        "videoId": "SU91cS_PmMw",
+        "duration": "12:37",
+        "completed": false,
+        "description": "Identify and segment your target audience for effective marketing."
+      },
+      {
+        "id": "video4",
+        "title": "Branding Fundamentals",
+        "videoId": "zLYoN9kuYJ0",
+        "duration": "11:28",
+        "completed": false,
+        "description": "Develop a strong brand identity and positioning strategy."
+      },
+      {
+        "id": "video5",
+        "title": "The Marketing Mix (4Ps)",
+        "videoId": "Mco8vhAqFXI",
+        "duration": "13:46",
+        "completed": false,
+        "description": "Master the 4Ps of marketing: Product, Price, Place, and Promotion."
+      },
+      {
+        "id": "video6",
+        "title": "Content Marketing",
+        "videoId": "Ti_QF_j-6-k",
+        "duration": "14:23",
+        "completed": false,
+        "description": "Create valuable content to attract and engage your target audience."
+      },
+      {
+        "id": "video7",
+        "title": "Social Media Marketing",
+        "videoId": "fDhkIHWQOLY",
+        "duration": "15:37",
+        "completed": false,
+        "description": "Leverage social media platforms for marketing your business."
+      },
+      {
+        "id": "video8",
+        "title": "Email Marketing",
+        "videoId": "-YvcRNTjmQY",
+        "duration": "9:42",
+        "completed": false,
+        "description": "Build effective email marketing campaigns to nurture leads and customers."
+      },
+      {
+        "id": "video9",
+        "title": "Marketing Analytics",
+        "videoId": "exAkT1Q8KV0",
+        "duration": "12:15",
+        "completed": false,
+        "description": "Measure and analyze the performance of your marketing efforts."
+      },
+      {
+        "id": "video10",
+        "title": "Creating a Marketing Plan",
+        "videoId": "DdCv0oXEfP4",
+        "duration": "16:28",
+        "completed": false,
+        "description": "Develop a comprehensive marketing plan for your business."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Marketing Fundamentals Assessment",
+      "questions": 35,
+      "duration": "60 minutes",
+      "completed": false,
+      "description": "Test your knowledge of marketing principles, strategies, and tactics."
+    }
+  },
+  "business-analytics": {
+    "id": "business-analytics",
+    "title": "Business Analytics",
+    "description": "Data-driven decision making for business",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Business Analytics",
+        "videoId": "7EdpBH81XIw",
+        "duration": "8:36",
+        "completed": false,
+        "description": "Understand how data analytics can drive better business decisions."
+      },
+      {
+        "id": "video2",
+        "title": "Data Collection Methods",
+        "videoId": "3OGkSJou-U0",
+        "duration": "11:24",
+        "completed": false,
+        "description": "Learn different methods for collecting relevant business data."
+      },
+      {
+        "id": "video3",
+        "title": "Data Cleaning and Preparation",
+        "videoId": "8rO7ztF4NtU",
+        "duration": "13:47",
+        "completed": false,
+        "description": "Master techniques for cleaning and preparing data for analysis."
+      },
+      {
+        "id": "video4",
+        "title": "Descriptive Analytics",
+        "videoId": "KuoJEfMRCTw",
+        "duration": "12:38",
+        "completed": false,
+        "description": "Use descriptive statistics to summarize and understand your data."
+      },
+      {
+        "id": "video5",
+        "title": "Data Visualization Techniques",
+        "videoId": "QlbkGiJ3SV8",
+        "duration": "15:26",
+        "completed": false,
+        "description": "Create effective visualizations to communicate data insights."
+      },
+      {
+        "id": "video6",
+        "title": "Introduction to Excel for Analytics",
+        "videoId": "Vl0H-qTclOg",
+        "duration": "14:33",
+        "completed": false,
+        "description": "Use Microsoft Excel for business data analysis."
+      },
+      {
+        "id": "video7",
+        "title": "SQL for Business Analysts",
+        "videoId": "4Z9KEBexzcM",
+        "duration": "16:42",
+        "completed": false,
+        "description": "Learn SQL basics for querying and analyzing business data."
+      },
+      {
+        "id": "video8",
+        "title": "Predictive Analytics",
+        "videoId": "1xQeXA0N9L0",
+        "duration": "13:18",
+        "completed": false,
+        "description": "Understand predictive modeling techniques for forecasting business outcomes."
+      },
+      {
+        "id": "video9",
+        "title": "Business Intelligence Tools",
+        "videoId": "26CRDRzHYYo",
+        "duration": "15:23",
+        "completed": false,
+        "description": "Explore popular business intelligence tools like Tableau and Power BI."
+      },
+      {
+        "id": "video10",
+        "title": "Making Data-Driven Decisions",
+        "videoId": "KcCi1QskECo",
+        "duration": "14:55",
+        "completed": false,
+        "description": "Apply analytics insights to make better strategic business decisions."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Business Analytics Mastery Assessment",
+      "questions": 40,
+      "duration": "70 minutes",
+      "completed": false,
+      "description": "Comprehensive test covering data collection, analysis, visualization, and business intelligence techniques."
+    }
+  },
+  "personal-finance": {
+  "id": "personal-finance",
+  "title": "Personal Finance",
+  "description": "Take control of your financial future",
+  "videos": [
+    {
+      "id": "video1",
+      "title": "Introduction to Personal Finance",
+      "videoId": "A7JKXQ3fwPA",
+      "duration": "9:42",
+      "completed": false,
+      "description": "Understand the importance of personal finance and why it matters for your future."
     },
-    
-    "business-analytics": {
-      "id": "business-analytics",
-      "title": "Business Analytics",
-      "description": "Data-driven decision making for business",
-      "videos": [
-        {
-          "id": "video1",
-          "title": "Introduction to Business Analytics",
-          "videoId": "xL_b2TBpdqI",
-          "duration": "8:36",
-          "completed": false,
-          "description": "Understand how data analytics can drive better business decisions."
-        },
-        {
-          "id": "video2",
-          "title": "Data Collection Methods",
-          "videoId": "C0PuCgQrxZU",
-          "duration": "11:24",
-          "completed": false,
-          "description": "Learn different methods for collecting relevant business data."
-        },
-        {
-          "id": "video3",
-          "title": "Data Cleaning and Preparation",
-          "videoId": "0xVqLJe9_CY",
-          "duration": "13:47",
-          "completed": false,
-          "description": "Master techniques for cleaning and preparing data for analysis."
-        },
-        {
-          "id": "video4",
-          "title": "Descriptive Analytics",
-          "videoId": "lJA2xUpcVHg",
-          "duration": "12:38",
-          "completed": false,
-          "description": "Use descriptive statistics to summarize and understand your data."
-        },
-        {
-          "id": "video5",
-          "title": "Data Visualization Techniques",
-          "videoId": "j1jpAsJtO-o",
-          "duration": "15:26",
-          "completed": false,
-          "description": "Create effective visualizations to communicate data insights."
-        },
-        {
-          "id": "video6",
-          "title": "Introduction to Excel for Analytics",
-          "videoId": "k1VUZEVuDJ8",
-          "duration": "14:33",
-          "completed": false,
-          "description": "Use Microsoft Excel for business data analysis."
-        },
-        {
-          "id": "video7",
-          "title": "SQL for Business Analysts",
-          "videoId": "HXV3zeQKqGY",
-          "duration": "16:42",
-          "completed": false,
-          "description": "Learn SQL basics for querying and analyzing business data."
-        },
-        {
-          "id": "video8",
-          "title": "Predictive Analytics",
-          "videoId": "D7a2s5_esvE",
-          "duration": "13:18",
-          "completed": false,
-          "description": "Understand predictive modeling techniques for forecasting business outcomes."
-        }
-    ]
-}}
-        
+    {
+      "id": "video2",
+      "title": "Budgeting Basics",
+      "videoId": "sVKQn2I4HDM",
+      "duration": "12:15",
+      "completed": false,
+      "description": "Learn how to create and stick to an effective personal budget."
+    },
+    {
+      "id": "video3",
+      "title": "Emergency Funds",
+      "videoId": "fVToMS2Q3XQ",
+      "duration": "8:33",
+      "completed": false,
+      "description": "Understand why emergency funds are crucial and how to build one."
+    },
+    {
+      "id": "video4",
+      "title": "Debt Management Strategies",
+      "videoId": "N_JhruRobRI",
+      "duration": "14:26",
+      "completed": false,
+      "description": "Learn different strategies to manage and eliminate debt effectively."
+    },
+    {
+      "id": "video5",
+      "title": "Saving for Major Purchases",
+      "videoId": "pFptt7VWGQg",
+      "duration": "10:17",
+      "completed": false,
+      "description": "Strategies for saving for big purchases like a home or car."
+    },
+    {
+      "id": "video6",
+      "title": "Retirement Planning Fundamentals",
+      "videoId": "zdXcMZgnUho",
+      "duration": "15:42",
+      "completed": false,
+      "description": "Start planning for retirement with these fundamental principles."
+    },
+    {
+      "id": "video7",
+      "title": "Understanding Credit Scores",
+      "videoId": "Vn9ounAgG3w",
+      "duration": "11:28",
+      "completed": false,
+      "description": "Learn how credit scores work and how to improve yours."
+    },
+    {
+      "id": "video8",
+      "title": "Insurance Essentials",
+      "videoId": "yDzLwNbqZJg",
+      "duration": "13:19",
+      "completed": false,
+      "description": "Understand what insurance you need and how much coverage is appropriate."
+    },
+    {
+      "id": "video9",
+      "title": "Tax Planning Strategies",
+      "videoId": "OgWXgcS97cA",
+      "duration": "16:23",
+      "completed": false,
+      "description": "Learn legal strategies to minimize your tax burden."
+    },
+    {
+      "id": "video10",
+      "title": "Creating a Financial Plan",
+      "videoId": "WkTaGrb4CdE",
+      "duration": "18:45",
+      "completed": false,
+      "description": "Put everything together by creating a comprehensive financial plan."
+    }
+  ],
+  "progress": 0,
+  "overallQuiz": {
+    "id": "overall-quiz",
+    "title": "Personal Finance Mastery Assessment",
+    "questions": 35,
+    "duration": "60 minutes",
+    "completed": false,
+    "description": "Test your knowledge of personal finance concepts from budgeting to retirement planning."
+  }
+  },
+
+  "stock-market": {
+    "id": "stock-market",
+    "title": "Stock Market Basics",
+    "description": "Learn how to invest in stocks and equities",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Stock Markets",
+        "videoId": "p7HKvqRI_Bo",
+        "duration": "11:23",
+        "completed": false,
+        "description": "Understand how stock markets work and why they exist."
+      },
+      {
+        "id": "video2",
+        "title": "Types of Investments",
+        "videoId": "4-i6N0XgLT8",
+        "duration": "13:47",
+        "completed": false,
+        "description": "Learn about different investment vehicles: stocks, bonds, ETFs, and mutual funds."
+      },
+      {
+        "id": "video3",
+        "title": "Understanding Stock Fundamentals",
+        "videoId": "7pwmGC8QbMY",
+        "duration": "15:32",
+        "completed": false,
+        "description": "Master key metrics like P/E ratio, EPS, and dividend yield."
+      },
+      {
+        "id": "video4",
+        "title": "Technical Analysis Basics",
+        "videoId": "eynxyoKgpng",
+        "duration": "14:18",
+        "completed": false,
+        "description": "Learn how to analyze stock price movements and chart patterns."
+      },
+      {
+        "id": "video5",
+        "title": "Fundamental Analysis",
+        "videoId": "HLtUmH-p-lQ",
+        "duration": "16:54",
+        "completed": false,
+        "description": "Understand how to evaluate a company's financial health and prospects."
+      },
+      {
+        "id": "video6",
+        "title": "Building a Balanced Portfolio",
+        "videoId": "KeU2tuhJe3c",
+        "duration": "12:37",
+        "completed": false,
+        "description": "Learn asset allocation and portfolio diversification strategies."
+      },
+      {
+        "id": "video7",
+        "title": "Investment Strategies",
+        "videoId": "6SbPRDOzYQc",
+        "duration": "18:46",
+        "completed": false,
+        "description": "Explore value investing, growth investing, and dividend investing approaches."
+      },
+      {
+        "id": "video8",
+        "title": "Risk Management",
+        "videoId": "JHVJsA8ZhNA",
+        "duration": "10:23",
+        "completed": false,
+        "description": "Learn how to assess and mitigate investment risks."
+      },
+      {
+        "id": "video9",
+        "title": "Trading Psychology",
+        "videoId": "q7K8Hft6CrQ",
+        "duration": "15:19",
+        "completed": false,
+        "description": "Master the mental aspects of investing and avoid common psychological pitfalls."
+      },
+      {
+        "id": "video10",
+        "title": "Creating an Investment Plan",
+        "videoId": "TH9HzGQnPCw",
+        "duration": "17:32",
+        "completed": false,
+        "description": "Develop a personalized investment strategy and long-term plan."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Stock Market Investment Assessment",
+      "questions": 40,
+      "duration": "75 minutes",
+      "completed": false,
+      "description": "Test your knowledge of stock market investing from fundamentals to advanced strategies."
+    }
+  },
+
+  "crypto-investing": {
+    "id": "crypto-investing",
+    "title": "Crypto Investing",
+    "description": "Navigate the world of cryptocurrency investments",
+    "videos": [
+      {
+        "id": "video1",
+        "title": "Introduction to Blockchain Technology",
+        "videoId": "SSo_EIwHSd4",
+        "duration": "12:47",
+        "completed": false,
+        "description": "Understand the fundamental technology behind cryptocurrencies."
+      },
+      {
+        "id": "video2",
+        "title": "Bitcoin and Major Cryptocurrencies",
+        "videoId": "kubGCSj5y3k",
+        "duration": "14:23",
+        "completed": false,
+        "description": "Learn about Bitcoin and other major cryptocurrencies in the market."
+      },
+      {
+        "id": "video3",
+        "title": "Cryptocurrency Wallets",
+        "videoId": "d8IBpfs9bf4",
+        "duration": "11:36",
+        "completed": false,
+        "description": "Understand different types of crypto wallets and how to secure your assets."
+      },
+      {
+        "id": "video4",
+        "title": "Crypto Exchanges",
+        "videoId": "JW6tyMRTSUU",
+        "duration": "13:52",
+        "completed": false,
+        "description": "Learn how to use cryptocurrency exchanges for buying and selling."
+      },
+      {
+        "id": "video5",
+        "title": "Understanding DeFi",
+        "videoId": "H-O3r2YMWJ4",
+        "duration": "16:28",
+        "completed": false,
+        "description": "Explore the world of decentralized finance and its potential."
+      },
+      {
+        "id": "video6",
+        "title": "NFTs and Digital Assets",
+        "videoId": "NV7TvmXZS4c",
+        "duration": "15:47",
+        "completed": false,
+        "description": "Learn about non-fungible tokens and digital collectibles."
+      },
+      {
+        "id": "video7",
+        "title": "Crypto Investment Strategies",
+        "videoId": "u-vrdPtZVXc",
+        "duration": "18:23",
+        "completed": false,
+        "description": "Explore different strategies for investing in cryptocurrencies."
+      },
+      {
+        "id": "video8",
+        "title": "Technical Analysis for Crypto",
+        "videoId": "1yJu6bYTHs4",
+        "duration": "17:41",
+        "completed": false,
+        "description": "Apply technical analysis methods to cryptocurrency markets."
+      },
+      {
+        "id": "video9",
+        "title": "Risk Management in Crypto",
+        "videoId": "d6D-pcwxPtY",
+        "duration": "14:19",
+        "completed": false,
+        "description": "Learn how to manage the high volatility and risks in crypto investing."
+      },
+      {
+        "id": "video10",
+        "title": "Building a Crypto Portfolio",
+        "videoId": "bBC-nXj3Ng4",
+        "duration": "19:26",
+        "completed": false,
+        "description": "Create a balanced cryptocurrency portfolio for long-term growth."
+      }
+    ],
+    "progress": 0,
+    "overallQuiz": {
+      "id": "overall-quiz",
+      "title": "Cryptocurrency Investment Assessment",
+      "questions": 45,
+      "duration": "80 minutes",
+      "completed": false,
+      "description": "Test your knowledge of blockchain technology and cryptocurrency investment strategies."
+    }
+  }
+}
