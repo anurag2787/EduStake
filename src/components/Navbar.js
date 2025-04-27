@@ -1,14 +1,15 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen } from 'lucide-react';
+import { Menu, X, BookOpen, User, LogIn } from 'lucide-react';
 import Link from "next/link";
-
+import { useAuth } from '@/context/AuthContext'; 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const { user } = useAuth(); // Get user from auth context
 
   // Handle scroll effect
   useEffect(() => {
@@ -84,14 +85,38 @@ function Navbar() {
               {/* Right menu items - hidden on mobile */}
               <div className="hidden md:flex items-center space-x-8">
                 <a href="/studycourse" className="text-white/90 hover:text-blue-400 transition-colors text-sm font-medium">Courses</a>
-                <motion.a
+                
+                {/* Conditional auth button */}
+                {user ? (
+                  <motion.a
+                    href="/profile"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition duration-300 text-sm font-medium"
+                  >
+                    <User size={16} />
+                    Profile
+                  </motion.a>
+                ) : (
+                  <motion.a
+                    href="/login"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition duration-300 text-sm font-medium"
+                  >
+                    <LogIn size={16} />
+                    Login
+                  </motion.a>
+                )}
+                
+                {/* <motion.a
                   href="#connect"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition duration-300 text-sm font-medium"
                 >
                   Connect Wallet
-                </motion.a>
+                </motion.a> */}
               </div>
 
               {/* Empty div to balance the mobile menu button */}
@@ -128,6 +153,20 @@ function Navbar() {
                   <a href="/studycourse" className="block text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
                     Courses
                   </a>
+                  
+                  {/* Conditional auth button for mobile */}
+                  {user ? (
+                    <a href="/profile" className="flex items-center gap-2 text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
+                      <User size={16} />
+                      Profile
+                    </a>
+                  ) : (
+                    <a href="/login" className="flex items-center gap-2 text-white/90 hover:text-blue-400 transition-colors py-3 px-4 rounded-lg hover:bg-white/5">
+                      <LogIn size={16} />
+                      Login
+                    </a>
+                  )}
+                  
                   <a href="#connect" className="block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-5 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition text-center mt-4">
                     Connect Wallet
                   </a>

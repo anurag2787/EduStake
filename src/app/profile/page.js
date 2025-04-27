@@ -24,6 +24,8 @@ import {
     Clock,
     Layers
 } from 'lucide-react';
+import { SiCplusplus, SiHtml5, SiC } from "react-icons/si";
+import { FaPython, FaReact } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
 import { signOut } from "firebase/auth";
 import { auth } from "@/auth";
@@ -79,28 +81,28 @@ const Dashboard = () => {
     const [courses, setCourses] = useState([
         {
             id: 1,
-            title: "Blockchain Fundamentals",
+            title: "C++ Programming",
             image: "/api/placeholder/100/60",
             progress: 75,
             lastAccessed: "2 days ago"
         },
         {
             id: 2,
-            title: "Smart Contract Development",
+            title: "C Programming",
             image: "/api/placeholder/100/60",
             progress: 45,
             lastAccessed: "Yesterday"
         },
         {
             id: 3,
-            title: "Web3 Integration",
+            title: "Python Basics",
             image: "/api/placeholder/100/60",
             progress: 20,
             lastAccessed: "1 week ago"
         },
         {
             id: 4,
-            title: "DeFi Applications",
+            title: "Web Development",
             image: "/api/placeholder/100/60",
             progress: 10,
             lastAccessed: "Just started"
@@ -345,154 +347,15 @@ const Dashboard = () => {
 };
 
 // Course Card Component
-// const ImprovedCourseCard = ({ course, index }) => {
-
-//     const getCourseIcon = (title) => {
-//         if (title.includes("C Programming")) return <Database size={16} className="text-blue-400" />;
-//         if (title.includes("C++ Programming")) return <Code size={16} className="text-purple-400" />;
-//         if (title.includes("Python Basis")) return <Globe size={16} className="text-green-400" />;
-//         if (title.includes("Web Development")) return <TrendingUp size={16} className="text-yellow-400" />;
-//         return <BookOpen size={16} className="text-blue-400" />;
-//     };
-
-//     const cardVariants = {
-//         hidden: { opacity: 0, y: 20 },
-//         visible: {
-//             opacity: 1,
-//             y: 0,
-//             transition: {
-//                 delay: index * 0.1,
-//                 type: "spring",
-//                 stiffness: 100,
-//                 damping: 15
-//             }
-//         },
-//         hover: {
-//             scale: 1.03,
-//             y: -5,
-//             transition: { type: "spring", stiffness: 300, damping: 15 }
-//         }
-//     };
-
-//     const getProgressStatus = (progress) => {
-//         if (progress < 25) return { text: "Just Started", color: "text-yellow-300" };
-//         if (progress < 50) return { text: "In Progress", color: "text-blue-300" };
-//         if (progress < 75) return { text: "Advancing", color: "text-green-300" };
-//         return { text: "Almost Complete", color: "text-purple-300" };
-//     };
-
-//     const progressStatus = getProgressStatus(course.progress)
-
-//     return (
-//         <motion.div
-//             variants={cardVariants}
-//             whileHover="hover"
-//             className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/70 shadow-lg group"
-//         >
-//             <div className="relative h-28 overflow-hidden">
-//                 <img
-//                     src={course.image}
-//                     alt={course.title}
-//                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-//                 />
-//                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
-
-//                 {/* Course badge */}
-//                 <div className="absolute top-3 right-3 bg-blue-900/60 backdrop-blur-sm px-2 py-1 rounded-md text-xs font-medium border border-blue-700/50 flex items-center gap-1.5">
-//                     {getCourseIcon(course.title)}
-//                     <span>{course.lastAccessed}</span>
-//                 </div>
-//             </div>
-
-//             <div className="p-5">
-//                 <div className="flex justify-between items-start mb-3">
-//                     <h3 className="font-bold text-lg text-white group-hover:text-blue-200 transition-colors">{course.title}</h3>
-//                     <motion.div
-//                         initial={{ opacity: 0.7, scale: 0.9 }}
-//                         whileHover={{ opacity: 1, scale: 1.1 }}
-//                         className="bg-blue-600/30 text-white font-bold rounded-full h-9 w-9 flex items-center justify-center border border-blue-500/30"
-//                     >
-//                         {course.progress}%
-//                     </motion.div>
-//                 </div>
-
-//                 <div className="mb-1 flex justify-between text-xs">
-//                     <span className={`${progressStatus.color} font-medium`}>{progressStatus.text}</span>
-//                     <span className="text-gray-400">{course.progress}/100 completed</span>
-//                 </div>
-
-//                 {/* Enhanced Progress Bar */}
-//                 <div className="relative h-3 bg-gray-700/70 rounded-full overflow-hidden mb-5 shadow-inner group">
-//                     {/* Main progress fill */}
-//                     <motion.div
-//                         className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
-//                         initial={{ width: 0 }}
-//                         animate={{ width: `${course.progress}%` }}
-//                         transition={{ duration: 1, ease: "easeOut", delay: 0.5 + (index * 0.1) }}
-//                     />
-
-//                     {/* Glow effect */}
-//                     <motion.div
-//                         className="absolute top-0 left-0 h-full bg-blue-400/20 blur-md rounded-full"
-//                         initial={{ width: 0 }}
-//                         animate={{ width: `${course.progress + 5}%` }}
-//                         transition={{ duration: 1.2, ease: "easeOut", delay: 0.6 + (index * 0.1) }}
-//                     />
-
-//                     {/* Shimmer effect - moves across the progress bar */}
-//                     <motion.div
-//                         className="absolute top-0 h-full w-20 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-//                         initial={{ left: '-20%', opacity: 0 }}
-//                         animate={{ left: '100%', opacity: 0.5 }}
-//                         transition={{
-//                             duration: 2,
-//                             repeat: Infinity,
-//                             repeatDelay: 1,
-//                             delay: 1 + (index * 0.2)
-//                         }}
-//                     />
-
-//                     {/* Progress markers */}
-//                     {[25, 50, 75].map(marker => (
-//                         <div
-//                             key={marker}
-//                             className={`absolute top-0 bottom-0 w-0.5 ${course.progress >= marker ? 'bg-white/30' : 'bg-gray-600/50'}`}
-//                             style={{ left: `${marker}%` }}
-//                         />
-//                     ))}
-//                 </div>
-
-//                 <div className="flex gap-2">
-//                     <motion.button
-//                         whileHover={{ scale: 1.05 }}
-//                         whileTap={{ scale: 0.95 }}
-//                         className="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 py-2.5 rounded-lg text-sm font-medium shadow-lg shadow-blue-900/30"
-//                     >
-//                         <Play size={14} className="text-blue-200" />
-//                         Continue
-//                     </motion.button>
-
-//                     <motion.button
-//                         whileHover={{ scale: 1.05 }}
-//                         whileTap={{ scale: 0.95 }}
-//                         className="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-700/50 hover:bg-gray-600/50 border border-gray-600/50"
-//                     >
-//                         <Bookmark size={16} className="text-gray-300" />
-//                     </motion.button>
-//                 </div>
-//             </div>
-//         </motion.div>
-//     );
-// };
 
 const ImprovedCourseCard = ({ course, index }) => {
     // Get appropriate icon based on programming language/course type
     const getCourseIcon = (title) => {
-        if (title.includes("C Programming")) return <Terminal size={16} className="text-blue-400" />;
-        if (title.includes("C++")) return <Code size={16} className="text-purple-400" />;
-        if (title.includes("Python")) return <FileCode size={16} className="text-green-400" />;
-        if (title.includes("Web")) return <Globe size={16} className="text-yellow-400" />;
-        if (title.includes("React")) return <Layers size={16} className="text-cyan-400" />;
+        if (title.includes("C++ Programming")) return <SiCplusplus size={16} className="text-blue-400" />;
+        if (title.includes("C Programming")) return <SiC size={16} className="text-purple-400" />;
+        if (title.includes("Python")) return <FaPython size={16} className="text-green-400" />;
+        if (title.includes("Web Development")) return < SiHtml5 size={16} className="text-yellow-400" />;
+        if (title.includes("React")) return <FaReact size={16} className="text-cyan-400" />;
         return <BookOpen size={16} className="text-blue-400" />;
     };
 
