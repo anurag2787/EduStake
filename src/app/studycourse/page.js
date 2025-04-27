@@ -179,6 +179,7 @@ export default function CourseSelectionPage() {
     if(!user){
       alert("Please login to continue learning.");
       router.push("/login");
+      return;
     }
     router.push(`/learncourse?id=${courseId}`);
   }

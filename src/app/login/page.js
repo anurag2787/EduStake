@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../auth";
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 const provider = new GoogleAuthProvider();
 
@@ -187,6 +188,15 @@ export default function Auth() {
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
   const router = useRouter();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    // Check if user is already logged in
+    
+      if (user) {
+        router.push('/profile');
+      }
+  }, [router,user]);
 
   // Handle input change
   const handleChange = (e) => {

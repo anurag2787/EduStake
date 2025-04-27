@@ -30,11 +30,6 @@ import { useRouter } from 'next/navigation';
 import { signOut } from "firebase/auth";
 import { auth } from "@/auth";
 
-
-
-
-
-
 const Dashboard = () => {
     const { user, logOut } = useAuth();
     const router = useRouter();
@@ -50,6 +45,13 @@ const Dashboard = () => {
             console.error("Logout error:", error);
         }
     };
+
+    useEffect(() => {
+        if (!user) {
+            router.push("/login");
+        }
+    }, [user, router]);
+
     // Mock userdemo data - this would come from your Firebase/backend
     const [userdemo, setUser] = useState({
         name: "Alex Johnson",
@@ -208,7 +210,7 @@ const Dashboard = () => {
 
                 <button onClick={handleSignOut} className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-full transition-all">
                     <LogOut size={16} />
-                    <span className="hidden sm:inline">Log Out</span>
+                    <span className="inline">Log Out</span>
                 </button>
             </header>
 
