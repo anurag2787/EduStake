@@ -4,81 +4,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 // import { SiMetamask } from 'react-icons/si';
+import {
+  updateProfile,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { auth } from "../../auth";
 
-// Enhanced background with floating elements and gradient overlay
-const EnhancedBackground = () => {
-  // Create particles with different sizes and animations
-  const particles = Array.from({ length: 40 });
-  
-  return (
-    <div className="fixed inset-0 overflow-hidden">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br bg-transparent opacity-90"></div>
-      
-      {/* Glowing circle in the background */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.1, 0.15, 0.1],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
-        }}
-      />
-      
-      {/* Floating particles */}
-      {particles.map((_, i) => {
-        const size = Math.random() * 12 + 2;
-        const duration = Math.random() * 60 + 30;
-        const delay = Math.random() * 20;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const opacity = Math.random() * 0.2 + 0.1;
-        
-        return (
-          <motion.div
-            key={i}
-            className={`absolute rounded-full ${i % 3 === 0 ? 'bg-blue-400' : i % 3 === 1 ? 'bg-indigo-400' : 'bg-cyan-400'}`}
-            style={{ width: size, height: size }}
-            initial={{ x: `${posX}vw`, y: `${posY}vh`, opacity: 0 }}
-            animate={{
-              y: [`${posY}vh`, `${(posY + 30) % 100}vh`],
-              x: [`${posX}vw`, `${(posX + (Math.random() * 10 - 5)) % 100}vw`],
-              opacity: [0, opacity, 0],
-              scale: [1, Math.random() * 0.5 + 1, 1]
-            }}
-            transition={{
-              duration,
-              delay,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        );
-      })}
-      
-      {/* Grid lines for depth */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNNjAgMEgwdjYwaDYwVjB6TTU5IDFIMXY1OGg1OFYxeiIgZmlsbD0iIzIwMjA0MCIgZmlsbC1vcGFjaXR5PSIwLjA1Ii8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
-    </div>
-  );
-};
+const provider = new GoogleAuthProvider();
 
 // Enhanced Input field component with subtle animation
 const InputField = ({ label, type, name, value, onChange, error, inputDelay }) => {
@@ -237,44 +172,6 @@ const SocialButton = ({ icon, children, onClick, delay = 0.7, variant = "default
   );
 };
 
-// Background ellipse for visual interest
-const BackgroundEllipse = () => (
-  <div className="absolute top-0 right-0 -z-10 overflow-hidden">
-    <svg viewBox="0 0 200 200" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="ellipseGradient" gradientTransform="rotate(45)">
-          <stop offset="0%" stopColor="#1d4ed8" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path 
-        fill="url(#ellipseGradient)" 
-        d="M41.1,-70.6C53.3,-64.2,63.2,-52.9,71,-39.5C78.8,-26.1,84.5,-10.5,83.5,4.6C82.5,19.8,74.7,34.4,64,45.2C53.2,56,39.5,62.9,24.9,68.1C10.4,73.3,-5,76.8,-19.1,73.4C-33.3,70,-46.1,59.8,-54.9,47.2C-63.7,34.7,-68.4,19.8,-70.7,4.3C-73,-11.2,-72.9,-27.2,-66.3,-40C-59.7,-52.8,-46.7,-62.2,-33.2,-68.3C-19.7,-74.4,-5.4,-77,8.3,-74.8C22,-72.6,42,-77,53.5,-70.2Z" 
-        transform="translate(100 100)" 
-      />
-    </svg>
-  </div>
-);
-
-// Logo component
-const Logo = () => (
-  <motion.div 
-    className="absolute top-6 left-6 flex items-center space-x-2"
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.2 }}
-  >
-    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 19V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M9 7L9 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M15 7L15 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </div>
-    <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200">EduStake</span>
-  </motion.div>
-);
-
 // Main Auth Component
 export default function Auth() {
   const [authMode, setAuthMode] = useState('login');
@@ -300,8 +197,18 @@ export default function Auth() {
     }
   };
 
+  // Handle SignIn/SignUp with Google
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      alert("Google Sign-In successful!");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Basic validation
@@ -324,6 +231,25 @@ export default function Auth() {
     
     // Submit form
     setIsLoading(true);
+
+    try {
+      if (authMode === 'login') {
+        await signInWithEmailAndPassword(auth, formData.email, formData.password);
+        setIsLoading(false);
+        alert("Sign in successful!");
+      } else {
+        const userCredential =await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+        const user = userCredential.user;
+
+        // Update the user's profile with their full name
+        await updateProfile(user, { displayName: formData.name });
+        setIsLoading(false);
+        alert("Account created successfully!");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+
     
     // Simulate API call
     setTimeout(() => {
@@ -552,12 +478,13 @@ export default function Auth() {
                     <SocialButton 
                       icon={<FaGoogle className="text-lg text-red-400" />} 
                       delay={0.7}
-                      onClick={() => console.log('Google login')}
+                      onClick={handleGoogleSignIn}
                     >
                       Continue with Google
                     </SocialButton>
                     
-                    <SocialButton 
+                    {/* For Future if we want connect to metamask in login/signup page */}
+                    {/* <SocialButton 
                       icon={<FaGoogle className="text-xl text-orange-400" />} 
                       delay={0.8}
                       variant="metamask"
@@ -577,7 +504,7 @@ export default function Auth() {
                           Web3 Verified
                         </motion.span>
                       )}
-                    </SocialButton>
+                    </SocialButton> */}
                     
                     <motion.div 
                       className="text-center mt-6"
@@ -595,8 +522,8 @@ export default function Auth() {
                         }}
                       >
                         {authMode === 'login' 
-                          ? "Don't have an account? Sign up" 
-                          : "Already have an account? Log in"}
+                          ? (<><span className='text-white'>Don't have an account?</span>{"  Sign up"}</>) 
+                          : (<><span className='text-white'>Already have an account?</span>{"  Log in"}</>)}
                         <svg className="w-3 h-3 ml-1 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                         </svg>
@@ -606,16 +533,6 @@ export default function Auth() {
                 </form>
               </motion.div>
             </AnimatePresence>
-          </motion.div>
-          
-          {/* Footer branding */}
-          <motion.div
-            className="text-center mt-6 text-gray-500 text-xs"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.7 }}
-            transition={{ delay: 1 }}
-          >
-            © 2025 EduStake | Learn and Earn with Web3
           </motion.div>
         </motion.div>
       </div>

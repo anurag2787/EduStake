@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import StarryBackground from '@/components/StarryBackground';
 import { usePathname } from 'next/navigation';
+import { AuthProvider } from '@/context/AuthContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +26,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AuthProvider>
         {showNavbar && <Navbar />}
         <StarryBackground />
         {children}
         <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -9,6 +9,7 @@ import { GiMoneyStack } from "react-icons/gi";
 import { MdBusinessCenter, MdOutlineAnalytics } from "react-icons/md";
 import { SiC } from "react-icons/si";
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext'; // Ensure this is correctly imported";
 
 // Sample course data
 const courseCategories = [
@@ -172,7 +173,13 @@ export default function CourseSelectionPage() {
   const [isExpanded, setIsExpanded] = useState(false);
   const router = useRouter();
 
+  const { user } = useAuth();
+
   const handlelearning = (courseId) => {
+    if(!user){
+      alert("Please login to continue learning.");
+      router.push("/login");
+    }
     router.push(`/learncourse?id=${courseId}`);
   }
 
