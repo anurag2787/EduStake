@@ -2,8 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../auth"; // Make sure this path is correct in your project
-
+import { auth } from "../auth"; 
 const AuthContext = createContext({ user: null });
 
 export const AuthProvider = ({ children }) => {

@@ -12,6 +12,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { auth } from "../../auth";
+import { useRouter } from 'next/navigation';
 
 const provider = new GoogleAuthProvider();
 
@@ -185,6 +186,7 @@ export default function Auth() {
   const [isLoading, setIsLoading] = useState(false);
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
+  const router = useRouter();
 
   // Handle input change
   const handleChange = (e) => {
@@ -201,7 +203,7 @@ export default function Auth() {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, provider);
-      alert("Google Sign-In successful!");
+      router.push('/profile');
     } catch (error) {
       console.log(error.message);
     }
@@ -236,7 +238,7 @@ export default function Auth() {
       if (authMode === 'login') {
         await signInWithEmailAndPassword(auth, formData.email, formData.password);
         setIsLoading(false);
-        alert("Sign in successful!");
+        router.push('/profile');
       } else {
         const userCredential =await createUserWithEmailAndPassword(auth, formData.email, formData.password);
         const user = userCredential.user;
