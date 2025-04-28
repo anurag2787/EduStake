@@ -10,6 +10,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../../auth";
 import { useRouter } from 'next/navigation';
@@ -190,13 +191,14 @@ export default function Auth() {
   const router = useRouter();
   const { user } = useAuth();
 
-  useEffect(() => {
-    // Check if user is already logged in
-    
-      if (user) {
-        router.push('/profile');
-      }
-  }, [router,user]);
+   useEffect(() => {
+          const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+              router.push('/profile');
+            }
+          });
+          return () => unsubscribe();
+        }, [user, router]);
 
   // Handle input change
   const handleChange = (e) => {

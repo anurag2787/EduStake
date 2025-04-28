@@ -27,7 +27,7 @@ import {
 import { SiCplusplus, SiHtml5, SiC } from "react-icons/si";
 import { FaPython, FaReact } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
-import { signOut } from "firebase/auth";
+import { signOut,onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/auth";
 
 const Dashboard = () => {
@@ -47,10 +47,13 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
-        if (!user) {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (!user) {
             router.push("/login");
-        }
-    }, [user, router]);
+          }
+        });
+        return () => unsubscribe();
+      }, [user, router]);
 
     // Mock userdemo data - this would come from your Firebase/backend
     const [userdemo, setUser] = useState({
