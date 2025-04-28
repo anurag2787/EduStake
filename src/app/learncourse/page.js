@@ -6,12 +6,15 @@ import { ChevronLeft, CheckCircle, BookOpen, HelpCircle, MessageSquare, Play } f
 import Link from 'next/link';
 // Import the course data from the JSON file
 import courseData from '../../assets/ccourseData.json';
+import { useAuth } from '@/context/AuthContext';
+import axios from 'axios';
 
 export default function LearnCoursePage() {
     const [courseId, setCourseId] = useState("");
     const router = useRouter();
     const { search } = useRouter();
     const searchParams = new URLSearchParams(search);
+    const { user } = useAuth();
 
     const handleaskquiz = (courseId) => {
         router.push(`/quiz?courseId=${courseId}`);
@@ -22,7 +25,7 @@ export default function LearnCoursePage() {
         const params = new URLSearchParams(window.location.search);
         const queryId = params.get("id");
         setCourseId(queryId);
-        console.log("Course ID from URL:", queryId);
+        // console.log("Course ID from URL:", queryId);
     }, [courseId]);
 
     // const courseId = "c-programming";
@@ -48,8 +51,20 @@ export default function LearnCoursePage() {
         setUserProgress(savedProgress);
     }, [courseId]);
 
-    const markVideoCompleted = (videoId) => {
+    const markVideoCompleted = async (videoId) => {
         if (!course) return;
+
+        try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/progress`, {
+              userId: user.uid,
+              courseId,
+              videoId,
+            });
+            const data = response.data;
+            setMessages(previousMessages);
+          } catch (error) {
+            console.error('Error :', error);
+          }
 
         const updatedCourse = {
             ...course,

@@ -10,6 +10,8 @@ import { MdBusinessCenter, MdOutlineAnalytics } from "react-icons/md";
 import { SiC } from "react-icons/si";
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext'; // Ensure this is correctly imported";
+import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
 
 // Sample course data
 const courseCategories = [
@@ -175,14 +177,41 @@ export default function CourseSelectionPage() {
 
   const { user } = useAuth();
 
-  const handlelearning = (courseId) => {
-    if(!user){
+  const handlelearning = async (courseId) => {
+    if (!user) {
       alert("Please login to continue learning.");
       router.push("/login");
       return;
     }
-    router.push(`/learncourse?id=${courseId}`);
-  }
+    const stakeAmountStr = typeof courseId.stakeAmount === 'number' ? courseId.stakeAmount.toString() : courseId.stakeAmount;
+  
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/enroll`, 
+        {
+          userId: user.uid,
+          courseId: courseId.id, // Ensure courseId is an object with id property
+          stakeAmount: stakeAmountStr, // Ensure stakeAmount exists
+        }
+      );
+      console.log(user.uid, courseId.id, stakeAmountStr);
+  
+      // Only show success if request was successful
+      toast.success("Enrollment successful!", {
+        position: "top-right"
+      });
+  
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      router.push(`/learncourse?id=${courseId.id}`);
+    } catch (error) {
+      console.error('Enrollment error:', error);
+      
+      // Show error message to user
+      toast.error(`Enrollment failed: ${error.response?.data?.message || error.message}`, {
+        position: "top-right"
+      });
+    }
+  };
 
   const filteredCourses = courseCategories
     .find(category => category.id === activeCategory)
@@ -212,11 +241,12 @@ export default function CourseSelectionPage() {
   };
 
   return (
+    <>
+    <ToastContainer />
     <div className="min-h-screen bg-transparent text-white">
       <Head>
         <title>EduStake - Course Selection</title>
         <meta name="description" content="Choose your learning path at EduStake" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {/* Hero Section */}
@@ -459,7 +489,7 @@ export default function CourseSelectionPage() {
                       boxShadow: "0 0 15px rgba(37, 99, 235, 0.7)",
                     }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => handlelearning(selectedCourse.id)}
+                    onClick={() => handlelearning(selectedCourse)}
                   >
                     Start Learning
                     <ChevronRight className="ml-2" />
@@ -528,5 +558,6 @@ export default function CourseSelectionPage() {
         </motion.div>
       </motion.div>
     </div>
+    </>
   );
 }
