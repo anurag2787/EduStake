@@ -53,12 +53,13 @@ export default function LearnCoursePage() {
 
     useEffect(() => {
         if (!user?.uid) return;
+        if(!courseId) return;
         const fetchProgress = async () => {
             try {
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/getprogress`, {
                     params: { userId: user.uid, courseId }
                 });
-                // console.log('Video Progress:', response.data.videos);
+                console.log('Video Progress:', response.data.videos);
                 const progressData = response.data.videos;
 
                 const completedVideoIds = progressData
