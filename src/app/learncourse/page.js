@@ -55,35 +55,64 @@ export default function LearnCoursePage() {
         if (!user?.uid) return;
         const fetchProgress = async () => {
             try {
-              const response = await axios.get(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/getprogress`, {
-                params: { userId: user.uid, courseId }
-              });
-              console.log('Video Progress:', response.data.videos);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/getprogress`, {
+                    params: { userId: user.uid, courseId }
+                });
+                // console.log('Video Progress:', response.data.videos);
+                const progressData = response.data.videos;
+
+                const completedVideoIds = progressData
+                    .filter(item => item.completed)
+                    .map(item => item.videoId);
+
+                // Update course videos
+                const updatedCourse = {
+                    ...course,
+                    videos: course.videos.map(video => ({
+                        ...video,
+                        completed: completedVideoIds.includes(video.id)
+                    }))
+                };
+
+                // Recalculate progress
+                const completedVideos = updatedCourse.videos.filter(v => v.completed).length;
+                updatedCourse.progress = Math.round((completedVideos / updatedCourse.videos.length) * 100);
+
+                setCourse(updatedCourse);
+
+                // Optional: Update userProgress state
+                const newUserProgress = {};
+                completedVideoIds.forEach(id => {
+                    newUserProgress[id] = true;
+                });
+                setUserProgress(newUserProgress);
+
+
             } catch (err) {
-              console.error('Error fetching progress:', err);
+                console.error('Error fetching progress:', err);
             }
-          };
-          
-      
+        };
+
+
         if (user?.uid) {
             fetchProgress();
         }
-      }, [user?.uid]);
+    }, [user?.uid]);
 
     const markVideoCompleted = async (videoId) => {
         if (!course) return;
 
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/progress`, {
-              userId: user.uid,
-              courseId,
-              videoId,
+                userId: user.uid,
+                courseId,
+                videoId,
             });
             const data = response.data;
             setMessages(previousMessages);
-          } catch (error) {
+        } catch (error) {
             console.error('Error :', error);
-          }
+        }
 
         const updatedCourse = {
             ...course,
