@@ -174,9 +174,10 @@ export default function CourseSelectionPage() {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const router = useRouter();
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   const { user } = useAuth();
-  
+
 
   useEffect(() => {
     if (!user?.uid) return;
@@ -185,13 +186,14 @@ export default function CourseSelectionPage() {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/allenroll`, {
           params: { userId: user?.uid } // adjust based on your user object
         });
-  
+
         console.log(response.data.courses);
+        setEnrolledCourses(response.data.courses);
       } catch (err) {
         setError(err.response?.data?.message || 'Something went wrong');
       }
     };
-  
+
     if (user?.uid) {
       fetchEnrolledCourses();
     }
@@ -204,10 +206,10 @@ export default function CourseSelectionPage() {
       return;
     }
     const stakeAmountStr = typeof courseId.stakeAmount === 'number' ? courseId.stakeAmount.toString() : courseId.stakeAmount;
-  
+
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/enroll`, 
+        `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/enroll`,
         {
           userId: user.uid,
           courseId: courseId.id, // Ensure courseId is an object with id property
@@ -215,17 +217,17 @@ export default function CourseSelectionPage() {
         }
       );
       console.log(user.uid, courseId.id, stakeAmountStr);
-  
+
       // Only show success if request was successful
       toast.success("Enrollment successful!", {
         position: "top-right"
       });
-  
+
       await new Promise(resolve => setTimeout(resolve, 1000));
       router.push(`/learncourse?id=${courseId.id}`);
     } catch (error) {
       console.error('Enrollment error:', error);
-      
+
       // Show error message to user
       toast.error(`Enrollment failed: ${error.response?.data?.message || error.message}`, {
         position: "top-right"
@@ -235,8 +237,8 @@ export default function CourseSelectionPage() {
 
   const filteredCourses = courseCategories
     .find(category => category.id === activeCategory)
-    ?.courses.filter(course => 
-      course.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    ?.courses.filter(course =>
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       course.description.toLowerCase().includes(searchQuery.toLowerCase())
     ) || [];
 
@@ -262,91 +264,91 @@ export default function CourseSelectionPage() {
 
   return (
     <>
-    <ToastContainer />
-    <div className="min-h-screen bg-transparent text-white">
-      <Head>
-        <title>EduStake - Course Selection</title>
-        <meta name="description" content="Choose your learning path at EduStake" />
-      </Head>
+      <ToastContainer />
+      <div className="min-h-screen bg-transparent text-white">
+        <Head>
+          <title>EduStake - Course Selection</title>
+          <meta name="description" content="Choose your learning path at EduStake" />
+        </Head>
 
-      {/* Hero Section */}
-      <section className="relative py-16 px-4 md:px-8 overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center z-10 relative mt-36"
-        >
-          <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-4"
-            initial={{ opacity: 0, y: 30 }}
+        {/* Hero Section */}
+        <section className="relative py-16 px-4 md:px-8 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="text-center z-10 relative mt-36"
           >
-            Choose Your Learning Path 🚀
-          </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl text-blue-200 mb-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            Stake Your Knowledge, Learn with AI, and Get Rewarded!
-          </motion.p>
-          
-          <motion.button
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full flex items-center mx-auto"
-            whileHover={{ 
-              scale: 1.05,
-              transition: { duration: 0.2 }
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start Learning
-            <motion.span
-              initial={{ x: 0 }}
-              whileHover={{ x: 5 }}
-              transition={{ duration: 0.3 }}
+            <motion.h1
+              className="text-4xl md:text-6xl font-bold mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
             >
-              <ChevronRight className="ml-2" />
-            </motion.span>
-          </motion.button>
-        </motion.div>
-        
-        {/* Animated background gradient */}
-        <div className="absolute inset-0 bg-transparent">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-400 to-transparent blur-3xl"></div>
-          </div>
-        </div>
-      </section>
+              Choose Your Learning Path 🚀
+            </motion.h1>
 
-      <main className="max-w-6xl mx-auto px-4 pb-16">
-        {/* Search & Filtering */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
-          <motion.div 
-            className="relative w-full md:w-1/2"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-blue-300" />
-            </div>
-            <motion.input
-              type="text"
-              placeholder="Search courses..."
-              className="w-full pl-10 pr-4 py-3 bg-blue-900/30 border border-blue-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              animate={isExpanded ? { width: "100%" } : { width: "100%" }}
-              onFocus={() => setIsExpanded(true)}
-              onBlur={() => setIsExpanded(false)}
-            />
+            <motion.p
+              className="text-xl md:text-2xl text-blue-200 mb-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              Stake Your Knowledge, Learn with AI, and Get Rewarded!
+            </motion.p>
+
+            <motion.button
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full flex items-center mx-auto"
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Start Learning
+              <motion.span
+                initial={{ x: 0 }}
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronRight className="ml-2" />
+              </motion.span>
+            </motion.button>
           </motion.div>
-          {/* For future filter as we don't have enough details now */}
-          {/* <motion.div 
+
+          {/* Animated background gradient */}
+          <div className="absolute inset-0 bg-transparent">
+            <div className="absolute inset-0 opacity-20">
+              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-400 to-transparent blur-3xl"></div>
+            </div>
+          </div>
+        </section>
+
+        <main className="max-w-6xl mx-auto px-4 pb-16">
+          {/* Search & Filtering */}
+          <div className="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+            <motion.div
+              className="relative w-full md:w-1/2"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-blue-300" />
+              </div>
+              <motion.input
+                type="text"
+                placeholder="Search courses..."
+                className="w-full pl-10 pr-4 py-3 bg-blue-900/30 border border-blue-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                animate={isExpanded ? { width: "100%" } : { width: "100%" }}
+                onFocus={() => setIsExpanded(true)}
+                onBlur={() => setIsExpanded(false)}
+              />
+            </motion.div>
+            {/* For future filter as we don't have enough details now */}
+            {/* <motion.div 
             className="relative w-full md:w-auto"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -367,217 +369,229 @@ export default function CourseSelectionPage() {
           </motion.div> */}
 
 
-        </div>
-
-        {/* Course Categories (Tabs) */}
-        <motion.div 
-          className="mb-8 overflow-x-auto"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          
-          <div className="flex space-x-1 md:space-x-4 border-b border-blue-700">
-            {courseCategories.map((category, index) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-4 py-3 text-sm md:text-base font-medium relative whitespace-nowrap ${
-                  activeCategory === category.id ? 'text-white' : 'text-blue-300 hover:text-white'
-                }`}
-              >
-                {category.name}
-                {activeCategory === category.id && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
-                    layoutId="activeTab"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
-              </button>
-            ))}
           </div>
 
-        </motion.div>
+          {/* Course Categories (Tabs) */}
+          <motion.div
+            className="mb-8 overflow-x-auto"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
 
-        {/* Course Cards Grid */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <AnimatePresence>
-            {sortedCourses.map((course, index) => (
-              <motion.div
-                key={course.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.03, 
-                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
-                  transition: { duration: 0.3 } 
-                }}
-                className="bg-gradient-to-br bg-transparent backdrop-blur-xl rounded-xl overflow-hidden border border-blue-700/50"
-              >
-                <div 
-                  className="p-6 cursor-pointer h-full flex flex-col"
-                  onClick={() => openCourseModal(course)}
+            <div className="flex space-x-1 md:space-x-4 border-b border-blue-700">
+              {courseCategories.map((category, index) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`px-4 py-3 text-sm md:text-base font-medium relative whitespace-nowrap ${activeCategory === category.id ? 'text-white' : 'text-blue-300 hover:text-white'
+                    }`}
                 >
-                  <div className="text-3xl mb-4">{course.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{course.title}</h3>
-                  <p className="text-blue-200 mb-4 flex-grow">{course.description}</p>
-                  <button 
-                    className="mt-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
-                  >
-                    Enroll Now
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+                  {category.name}
+                  {activeCategory === category.id && (
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                      layoutId="activeTab"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
 
-        {/* Course Details Modal */}
-        <AnimatePresence>
-          {selectedCourse && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-            >
+          </motion.div>
+
+          {/* Course Cards Grid */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <AnimatePresence>
+              {sortedCourses.map((course, index) => {
+                const isEnrolled = enrolledCourses.includes(course.id); // Check if enrolled
+
+                return (
+                  <motion.div
+                    key={course.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{
+                      scale: 1.03,
+                      boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
+                      transition: { duration: 0.3 }
+                    }}
+                    className="bg-gradient-to-br bg-transparent backdrop-blur-xl rounded-xl overflow-hidden border border-blue-700/50"
+                  >
+                    <div
+                      className="p-6 cursor-pointer h-full flex flex-col"
+                      onClick={() => {
+                        if (isEnrolled) {
+                          router.push(`/learncourse?id=${course.id}`);
+                        } else {
+                          openCourseModal(course);
+                        }
+                      }}
+                    >
+                      <div className="text-3xl mb-4">{course.icon}</div>
+                      <h3 className="text-xl font-bold mb-2">{course.title}</h3>
+                      <p className="text-blue-200 mb-4 flex-grow">{course.description}</p>
+
+                      <button
+                        className={`mt-auto ${isEnrolled ? 'bg-green-800 hover:bg-green-900' : 'bg-blue-600 hover:bg-blue-700'
+                          } text-white font-medium py-2 px-4 rounded-lg transition-colors`}
+                      >
+                        {isEnrolled ? 'View Course' : 'Enroll Now'}
+                      </button>
+                    </div>
+                  </motion.div>
+                );
+              })}
+
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Course Details Modal */}
+          <AnimatePresence>
+            {selectedCourse && (
               <motion.div
-                className="fixed inset-0 bg-black/70 backdrop-blur-sm"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={closeCourseModal}
-              />
-              
-              <motion.div
-                className="bg-transparent border-blue-700/50 rounded-xl w-full max-w-2xl z-10 overflow-hidden"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ type: "spring", damping: 25 }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
               >
-                <div className="p-6 md:p-8">
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="flex items-center">
-                      <span className="text-4xl mr-4">{selectedCourse.icon}</span>
-                      <h2 className="text-2xl font-bold">{selectedCourse.title}</h2>
-                    </div>
-                    <button 
-                      onClick={closeCourseModal}
-                      className="text-blue-300 hover:text-white"
-                    >
-                      <X size={24} />
-                    </button>
-                  </div>
-                  
-                  <p className="text-blue-100 mb-6">{selectedCourse.fullDescription}</p>
-                  
-                  <div className="mb-6">
-                    <h3 className="text-lg font-medium mb-2">Topics Covered:</h3>
-                    <ul className="list-disc pl-5 text-blue-200 space-y-1">
-                      {selectedCourse.topics.map((topic, index) => (
-                        <li key={index}>{topic}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="bg-blue-900/30 p-4 rounded-lg">
-                      <h4 className="text-sm text-blue-300 mb-1">Duration</h4>
-                      <p className="font-medium">{selectedCourse.duration}</p>
-                    </div>
-                    <div className="bg-blue-900/30 p-4 rounded-lg">
-                      <h4 className="text-sm text-blue-300 mb-1">Stake Amount</h4>
-                      <p className="font-medium">{selectedCourse.stakeAmount}</p>
-                    </div>
-                  </div>
-                  
-                  <motion.button
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center"
-                    whileHover={{ 
-                      scale: 1.02,
-                      boxShadow: "0 0 15px rgba(37, 99, 235, 0.7)",
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => handlelearning(selectedCourse)}
-                  >
-                    Start Learning
-                    <ChevronRight className="ml-2" />
-                  </motion.button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </main>
+                <motion.div
+                  className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={closeCourseModal}
+                />
 
-      {/* Motivational Quote Section */}
-      <motion.div 
-        className="py-6 bg-transparent overflow-hidden border-t border-b border-blue-800"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-      >
+                <motion.div
+                  className="bg-transparent border-blue-700/50 rounded-xl w-full max-w-2xl z-10 overflow-hidden"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  transition={{ type: "spring", damping: 25 }}
+                >
+                  <div className="p-6 md:p-8">
+                    <div className="flex justify-between items-start mb-6">
+                      <div className="flex items-center">
+                        <span className="text-4xl mr-4">{selectedCourse.icon}</span>
+                        <h2 className="text-2xl font-bold">{selectedCourse.title}</h2>
+                      </div>
+                      <button
+                        onClick={closeCourseModal}
+                        className="text-blue-300 hover:text-white"
+                      >
+                        <X size={24} />
+                      </button>
+                    </div>
+
+                    <p className="text-blue-100 mb-6">{selectedCourse.fullDescription}</p>
+
+                    <div className="mb-6">
+                      <h3 className="text-lg font-medium mb-2">Topics Covered:</h3>
+                      <ul className="list-disc pl-5 text-blue-200 space-y-1">
+                        {selectedCourse.topics.map((topic, index) => (
+                          <li key={index}>{topic}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      <div className="bg-blue-900/30 p-4 rounded-lg">
+                        <h4 className="text-sm text-blue-300 mb-1">Duration</h4>
+                        <p className="font-medium">{selectedCourse.duration}</p>
+                      </div>
+                      <div className="bg-blue-900/30 p-4 rounded-lg">
+                        <h4 className="text-sm text-blue-300 mb-1">Stake Amount</h4>
+                        <p className="font-medium">{selectedCourse.stakeAmount}</p>
+                      </div>
+                    </div>
+
+                    <motion.button
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center"
+                      whileHover={{
+                        scale: 1.02,
+                        boxShadow: "0 0 15px rgba(37, 99, 235, 0.7)",
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handlelearning(selectedCourse)}
+                    >
+                      Start Learning
+                      <ChevronRight className="ml-2" />
+                    </motion.button>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </main>
+
+        {/* Motivational Quote Section */}
         <motion.div
-          animate={{ x: ["100%", "-100%"] }}
-          transition={{ 
-            repeat: Infinity, 
-            duration: 20,
-            ease: "linear"
-          }}
-          className="whitespace-nowrap text-xl md:text-2xl font-medium text-blue-200"
+          className="py-6 bg-transparent overflow-hidden border-t border-b border-blue-800"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
         >
-          <motion.span
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 2,
-              times: [0, 0.5, 1],
-              repeatDelay: 1
+          <motion.div
+            animate={{ x: ["100%", "-100%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 20,
+              ease: "linear"
             }}
-            className="inline-block mx-2"
+            className="whitespace-nowrap text-xl md:text-2xl font-medium text-blue-200"
           >
-            Commit to Learning.
-          </motion.span>
-          <motion.span
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 2,
-              times: [0, 0.5, 1],
-              repeatDelay: 1,
-              delay: 0.7
-            }}
-            className="inline-block mx-2"
-          >
-            Stay Focused.
-          </motion.span>
-          <motion.span
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 2,
-              times: [0, 0.5, 1],
-              repeatDelay: 1,
-              delay: 1.4
-            }}
-            className="inline-block mx-2"
-          >
-            Your Success is Staked!
-          </motion.span>
+            <motion.span
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+                times: [0, 0.5, 1],
+                repeatDelay: 1
+              }}
+              className="inline-block mx-2"
+            >
+              Commit to Learning.
+            </motion.span>
+            <motion.span
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+                times: [0, 0.5, 1],
+                repeatDelay: 1,
+                delay: 0.7
+              }}
+              className="inline-block mx-2"
+            >
+              Stay Focused.
+            </motion.span>
+            <motion.span
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+                times: [0, 0.5, 1],
+                repeatDelay: 1,
+                delay: 1.4
+              }}
+              className="inline-block mx-2"
+            >
+              Your Success is Staked!
+            </motion.span>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
     </>
   );
 }
