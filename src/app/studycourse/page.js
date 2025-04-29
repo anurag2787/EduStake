@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ChevronRight, X } from 'lucide-react';
@@ -176,6 +176,26 @@ export default function CourseSelectionPage() {
   const router = useRouter();
 
   const { user } = useAuth();
+  
+
+  useEffect(() => {
+    if (!user?.uid) return;
+    const fetchEnrolledCourses = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/allenroll`, {
+          params: { userId: user?.uid } // adjust based on your user object
+        });
+  
+        console.log(response.data.courses);
+      } catch (err) {
+        setError(err.response?.data?.message || 'Something went wrong');
+      }
+    };
+  
+    if (user?.uid) {
+      fetchEnrolledCourses();
+    }
+  }, [user?.uid]);
 
   const handlelearning = async (courseId) => {
     if (!user) {

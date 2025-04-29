@@ -51,6 +51,25 @@ export default function LearnCoursePage() {
         setUserProgress(savedProgress);
     }, [courseId]);
 
+    useEffect(() => {
+        if (!user?.uid) return;
+        const fetchProgress = async () => {
+            try {
+              const response = await axios.get(`${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/getprogress`, {
+                params: { userId: user.uid, courseId }
+              });
+              console.log('Video Progress:', response.data.videos);
+            } catch (err) {
+              console.error('Error fetching progress:', err);
+            }
+          };
+          
+      
+        if (user?.uid) {
+            fetchProgress();
+        }
+      }, [user?.uid]);
+
     const markVideoCompleted = async (videoId) => {
         if (!course) return;
 
