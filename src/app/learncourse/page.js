@@ -98,7 +98,7 @@ export default function LearnCoursePage() {
         if (user?.uid) {
             fetchProgress();
         }
-    }, [user?.uid]);
+    }, [user?.uid,courseId]);
 
     const markVideoCompleted = async (videoId) => {
         if (!course) return;
