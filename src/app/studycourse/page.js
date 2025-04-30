@@ -190,7 +190,7 @@ export default function CourseSelectionPage() {
         console.log(response.data.courses);
         setEnrolledCourses(response.data.courses);
       } catch (err) {
-        setError(err.response?.data?.message || 'Something went wrong');
+        console.log(err.response?.data?.message || 'Something went wrong');
       }
     };
 
