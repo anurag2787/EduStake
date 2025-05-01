@@ -25,7 +25,7 @@ import {
     Layers
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { signOut,onAuthStateChanged } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/auth";
 import { FaPython, FaJava, FaReact, FaChartLine, FaBusinessTime } from "react-icons/fa";
 import { SiCplusplus, SiHtml5, SiJavascript } from "react-icons/si";
@@ -33,164 +33,166 @@ import { GiMoneyStack } from "react-icons/gi";
 import { MdBusinessCenter, MdOutlineAnalytics } from "react-icons/md";
 import { SiC } from "react-icons/si";
 import axios from 'axios';
+import Loader from '@/components/Loader';
 
 const courseCategories = [
-  {
-    id: "programming",
-    name: "Programming 🖥️",
-    courses: [
-      {
-        id: "c-programming",
-        title: "C Programming",
-        icon: <SiC />,
-        description: "Learn the fundamentals of C programming language",
-        fullDescription: "Master the C programming language from basics to advanced concepts. This course covers variables, loops, functions, pointers, and memory management.",
-        topics: ["Introduction to C", "Data Types & Variables", "Control Structures", "Functions", "Pointers & Memory"],
-        duration: "4 weeks",
-        stakeAmount: "50 EDST",
-        difficulty: "Beginner",
-      },
-      {
-        id: "cpp",
-        title: "C++ Programming",
-        icon: <SiCplusplus />,
-        description: "Object-oriented programming with C++",
-        fullDescription: "Build upon your C knowledge and learn object-oriented programming with C++. This course covers classes, inheritance, polymorphism, and STL.",
-        topics: ["C++ Basics", "Classes & Objects", "Inheritance", "Polymorphism", "Standard Template Library"],
-        duration: "6 weeks",
-        stakeAmount: "75 EDST",
-        difficulty: "Intermediate",
-      },
-      {
-        id: "java",
-        title: "Java",
-        icon: <FaJava />,
-        description: "Platform-independent programming with Java",
-        fullDescription: "Learn Java programming language for cross-platform development. This course covers core Java concepts, OOP principles, and basic GUI development.",
-        topics: ["Java Syntax", "Object-Oriented Programming", "Exception Handling", "Collections Framework", "GUI with Swing"],
-        duration: "8 weeks",
-        stakeAmount: "80 EDST",
-        difficulty: "Intermediate",
-      },
-      {
-        id: "python-basics",
-        title: "Python Basics",
-        icon: <FaPython />,
-        description: "Start your programming journey with Python",
-        fullDescription: "Begin your programming journey with Python, one of the most beginner-friendly languages. Learn syntax, data structures, and basic algorithms.",
-        topics: ["Python Syntax", "Data Types", "Control Flow", "Functions", "Basic Data Structures"],
-        duration: "3 weeks",
-        stakeAmount: "40 EDST",
-        difficulty: "Beginner",
-      },
-      {
-        id: "web-dev",
-        title: "Web Development",
-        icon: <SiHtml5 />,
-        description: "Build responsive websites with HTML, CSS, and JavaScript",
-        fullDescription: "Master the fundamentals of web development. Learn to create responsive, interactive websites using HTML, CSS, and JavaScript.",
-        topics: ["HTML5 Fundamentals", "CSS Styling & Layout", "JavaScript Basics", "DOM Manipulation", "Responsive Design"],
-        duration: "5 weeks",
-        stakeAmount: "60 EDST",
-        difficulty: "Beginner",
-      },
-      {
-        id: "react",
-        title: "React.js",
-        icon: <FaReact />,
-        description: "Build modern user interfaces with React",
-        fullDescription: "Learn to build modern, component-based user interfaces with React. This course covers components, state management, hooks, and routing.",
-        topics: ["React Components", "Props & State", "Hooks", "Context API", "React Router"],
-        duration: "6 weeks",
-        stakeAmount: "70 EDST",
-        difficulty: "Intermediate",
-      },
-    ],
-  },
-  {
-    id: "business",
-    name: "Business 💼",
-    courses: [
-      {
-        id: "entrepreneurship",
-        title: "Entrepreneurship",
-        icon: <MdBusinessCenter />,
-        description: "Learn how to launch and grow your business",
-        fullDescription: "Discover how to identify opportunities, develop business models, and build successful ventures. This course covers all aspects of entrepreneurship.",
-        topics: ["Ideation & Opportunity", "Business Model Canvas", "Market Research", "Funding Strategies", "Growth Hacking"],
-        duration: "8 weeks",
-        stakeAmount: "100 EDST",
-        difficulty: "Intermediate",
-      },
-      {
-        id: "marketing-basics",
-        title: "Marketing Basics",
-        icon: "📣",
-        description: "Learn fundamental marketing principles and strategies",
-        fullDescription: "Master the essentials of marketing from market research to campaign execution. Learn how to reach your target audience effectively.",
-        topics: ["Marketing Fundamentals", "Target Audience Analysis", "Brand Positioning", "Marketing Mix", "Digital Marketing Intro"],
-        duration: "4 weeks",
-        stakeAmount: "60 EDST",
-        difficulty: "Beginner",
-      },
-      {
-        id: "business-analytics",
-        title: "Business Analytics",
-        icon: <MdOutlineAnalytics />,
-        description: "Data-driven decision making for business",
-        fullDescription: "Learn how to use data to make better business decisions. This course covers data collection, analysis, visualization, and interpretation.",
-        topics: ["Data Collection Methods", "Statistical Analysis", "Data Visualization", "Business Intelligence Tools", "Predictive Analytics"],
-        duration: "6 weeks",
-        stakeAmount: "80 EDST",
-        difficulty: "Intermediate",
-      },
-    ],
-  },
-  {
-    id: "finance",
-    name: "Finance 📊",
-    courses: [
-      {
-        id: "personal-finance",
-        title: "Personal Finance",
-        icon: <GiMoneyStack />,
-        description: "Take control of your financial future",
-        fullDescription: "Learn how to manage your money effectively, build wealth, and achieve financial independence. This course covers budgeting, saving, investing, and more.",
-        topics: ["Budgeting Basics", "Debt Management", "Emergency Funds", "Retirement Planning", "Tax Strategies"],
-        duration: "4 weeks",
-        stakeAmount: "50 EDST",
-        difficulty: "Beginner",
-      },
-      {
-        id: "stock-market",
-        title: "Stock Market Basics",
-        icon: <FaChartLine />,
-        description: "Learn how to invest in stocks and equities",
-        fullDescription: "Understand how the stock market works and develop strategies for successful investing. This course covers stock analysis, portfolio management, and risk assessment.",
-        topics: ["Stock Market Fundamentals", "Technical Analysis", "Fundamental Analysis", "Portfolio Theory", "Risk Management"],
-        duration: "6 weeks",
-        stakeAmount: "75 EDST",
-        difficulty: "Intermediate",
-      },
-      {
-        id: "crypto-investing",
-        title: "Crypto Investing",
-        icon: "🪙",
-        description: "Navigate the world of cryptocurrency investments",
-        fullDescription: "Learn the fundamentals of blockchain technology and cryptocurrency investing. This course covers different cryptocurrencies, trading strategies, and security best practices.",
-        topics: ["Blockchain Fundamentals", "Cryptocurrency Types", "Trading Platforms", "Investment Strategies", "Security & Storage"],
-        duration: "5 weeks",
-        stakeAmount: "90 EDST",
-        difficulty: "Intermediate",
-      },
-    ],
-  },
+    {
+        id: "programming",
+        name: "Programming 🖥️",
+        courses: [
+            {
+                id: "c-programming",
+                title: "C Programming",
+                icon: <SiC />,
+                description: "Learn the fundamentals of C programming language",
+                fullDescription: "Master the C programming language from basics to advanced concepts. This course covers variables, loops, functions, pointers, and memory management.",
+                topics: ["Introduction to C", "Data Types & Variables", "Control Structures", "Functions", "Pointers & Memory"],
+                duration: "4 weeks",
+                stakeAmount: "50 EDST",
+                difficulty: "Beginner",
+            },
+            {
+                id: "cpp",
+                title: "C++ Programming",
+                icon: <SiCplusplus />,
+                description: "Object-oriented programming with C++",
+                fullDescription: "Build upon your C knowledge and learn object-oriented programming with C++. This course covers classes, inheritance, polymorphism, and STL.",
+                topics: ["C++ Basics", "Classes & Objects", "Inheritance", "Polymorphism", "Standard Template Library"],
+                duration: "6 weeks",
+                stakeAmount: "75 EDST",
+                difficulty: "Intermediate",
+            },
+            {
+                id: "java",
+                title: "Java",
+                icon: <FaJava />,
+                description: "Platform-independent programming with Java",
+                fullDescription: "Learn Java programming language for cross-platform development. This course covers core Java concepts, OOP principles, and basic GUI development.",
+                topics: ["Java Syntax", "Object-Oriented Programming", "Exception Handling", "Collections Framework", "GUI with Swing"],
+                duration: "8 weeks",
+                stakeAmount: "80 EDST",
+                difficulty: "Intermediate",
+            },
+            {
+                id: "python-basics",
+                title: "Python Basics",
+                icon: <FaPython />,
+                description: "Start your programming journey with Python",
+                fullDescription: "Begin your programming journey with Python, one of the most beginner-friendly languages. Learn syntax, data structures, and basic algorithms.",
+                topics: ["Python Syntax", "Data Types", "Control Flow", "Functions", "Basic Data Structures"],
+                duration: "3 weeks",
+                stakeAmount: "40 EDST",
+                difficulty: "Beginner",
+            },
+            {
+                id: "web-dev",
+                title: "Web Development",
+                icon: <SiHtml5 />,
+                description: "Build responsive websites with HTML, CSS, and JavaScript",
+                fullDescription: "Master the fundamentals of web development. Learn to create responsive, interactive websites using HTML, CSS, and JavaScript.",
+                topics: ["HTML5 Fundamentals", "CSS Styling & Layout", "JavaScript Basics", "DOM Manipulation", "Responsive Design"],
+                duration: "5 weeks",
+                stakeAmount: "60 EDST",
+                difficulty: "Beginner",
+            },
+            {
+                id: "react",
+                title: "React.js",
+                icon: <FaReact />,
+                description: "Build modern user interfaces with React",
+                fullDescription: "Learn to build modern, component-based user interfaces with React. This course covers components, state management, hooks, and routing.",
+                topics: ["React Components", "Props & State", "Hooks", "Context API", "React Router"],
+                duration: "6 weeks",
+                stakeAmount: "70 EDST",
+                difficulty: "Intermediate",
+            },
+        ],
+    },
+    {
+        id: "business",
+        name: "Business 💼",
+        courses: [
+            {
+                id: "entrepreneurship",
+                title: "Entrepreneurship",
+                icon: <MdBusinessCenter />,
+                description: "Learn how to launch and grow your business",
+                fullDescription: "Discover how to identify opportunities, develop business models, and build successful ventures. This course covers all aspects of entrepreneurship.",
+                topics: ["Ideation & Opportunity", "Business Model Canvas", "Market Research", "Funding Strategies", "Growth Hacking"],
+                duration: "8 weeks",
+                stakeAmount: "100 EDST",
+                difficulty: "Intermediate",
+            },
+            {
+                id: "marketing-basics",
+                title: "Marketing Basics",
+                icon: "📣",
+                description: "Learn fundamental marketing principles and strategies",
+                fullDescription: "Master the essentials of marketing from market research to campaign execution. Learn how to reach your target audience effectively.",
+                topics: ["Marketing Fundamentals", "Target Audience Analysis", "Brand Positioning", "Marketing Mix", "Digital Marketing Intro"],
+                duration: "4 weeks",
+                stakeAmount: "60 EDST",
+                difficulty: "Beginner",
+            },
+            {
+                id: "business-analytics",
+                title: "Business Analytics",
+                icon: <MdOutlineAnalytics />,
+                description: "Data-driven decision making for business",
+                fullDescription: "Learn how to use data to make better business decisions. This course covers data collection, analysis, visualization, and interpretation.",
+                topics: ["Data Collection Methods", "Statistical Analysis", "Data Visualization", "Business Intelligence Tools", "Predictive Analytics"],
+                duration: "6 weeks",
+                stakeAmount: "80 EDST",
+                difficulty: "Intermediate",
+            },
+        ],
+    },
+    {
+        id: "finance",
+        name: "Finance 📊",
+        courses: [
+            {
+                id: "personal-finance",
+                title: "Personal Finance",
+                icon: <GiMoneyStack />,
+                description: "Take control of your financial future",
+                fullDescription: "Learn how to manage your money effectively, build wealth, and achieve financial independence. This course covers budgeting, saving, investing, and more.",
+                topics: ["Budgeting Basics", "Debt Management", "Emergency Funds", "Retirement Planning", "Tax Strategies"],
+                duration: "4 weeks",
+                stakeAmount: "50 EDST",
+                difficulty: "Beginner",
+            },
+            {
+                id: "stock-market",
+                title: "Stock Market Basics",
+                icon: <FaChartLine />,
+                description: "Learn how to invest in stocks and equities",
+                fullDescription: "Understand how the stock market works and develop strategies for successful investing. This course covers stock analysis, portfolio management, and risk assessment.",
+                topics: ["Stock Market Fundamentals", "Technical Analysis", "Fundamental Analysis", "Portfolio Theory", "Risk Management"],
+                duration: "6 weeks",
+                stakeAmount: "75 EDST",
+                difficulty: "Intermediate",
+            },
+            {
+                id: "crypto-investing",
+                title: "Crypto Investing",
+                icon: "🪙",
+                description: "Navigate the world of cryptocurrency investments",
+                fullDescription: "Learn the fundamentals of blockchain technology and cryptocurrency investing. This course covers different cryptocurrencies, trading strategies, and security best practices.",
+                topics: ["Blockchain Fundamentals", "Cryptocurrency Types", "Trading Platforms", "Investment Strategies", "Security & Storage"],
+                duration: "5 weeks",
+                stakeAmount: "90 EDST",
+                difficulty: "Intermediate",
+            },
+        ],
+    },
 ];
 
 const Dashboard = () => {
     const [courses, setCourses] = useState([]);
-    const { user, logO} = useAuth();
+    const { user, logO } = useAuth();
     const router = useRouter();
+    const [isLoad,setIsLoad] = useState(true);
     const handleSignOut = async () => {
         const confirmed = window.confirm("Are you sure you want to logout?");
         if (!confirmed) {
@@ -206,69 +208,70 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!user?.uid) return;
-      
+
         const fetchCourseProgress = async () => {
-          try {
-            // Step 1: Fetch enrolled course IDs
-            const enrolledResponse = await axios.get(
-              `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/allenroll`,
-              { params: { userId: user.uid } }
-            );
-      
-            const courseIds = enrolledResponse.data.courses; // ['cpp', 'web-dev', 'c-programming']
-      
-            // Step 2: Fetch completed videos count for each course
-            const progressPromises = courseIds.map(async (courseId) => {
-              const progressResponse = await axios.get(
-                `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/getprogress`,
-                { params: { userId: user.uid, courseId } }
-              );
-      
-              const completedVideos = progressResponse.data.videos;
-              return {
-                courseId,
-                completedVideosCount: Array.isArray(completedVideos) ? completedVideos.length : 0,
-              };
-            });
-      
-            const progressData = await Promise.all(progressPromises);
-      
-            // Step 3: Merge with metadata from courseCategories
-            const allCourses = courseCategories.flatMap(category => category.courses);
-      
-            const finalCourses = progressData.map(progress => {
-              const meta = allCourses.find(c => c.id === progress.courseId);
-      
-              if (!meta) return null;
-      
-              return {
-                id: meta.id,
-                title: meta.title,
-                image: "/api/placeholder/100/60", // Use real image path if available
-                progress: Math.min((progress.completedVideosCount / 10) * 100, 100),
-                lastAccessed: "Recently", // You can adjust this logic if available
-              };
-            }).filter(Boolean); // filter out nulls
-      
-            setCourses(finalCourses);
-          } catch (err) {
-            console.error(err.response?.data?.message || "Something went wrong");
-          }
+            try {
+                // Step 1: Fetch enrolled course IDs
+                const enrolledResponse = await axios.get(
+                    `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/allenroll`,
+                    { params: { userId: user.uid } }
+                );
+
+                const courseIds = enrolledResponse.data.courses; // ['cpp', 'web-dev', 'c-programming']
+
+                // Step 2: Fetch completed videos count for each course
+                const progressPromises = courseIds.map(async (courseId) => {
+                    const progressResponse = await axios.get(
+                        `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/getprogress`,
+                        { params: { userId: user.uid, courseId } }
+                    );
+
+                    const completedVideos = progressResponse.data.videos;
+                    return {
+                        courseId,
+                        completedVideosCount: Array.isArray(completedVideos) ? completedVideos.length : 0,
+                    };
+                });
+
+                const progressData = await Promise.all(progressPromises);
+
+                // Step 3: Merge with metadata from courseCategories
+                const allCourses = courseCategories.flatMap(category => category.courses);
+
+                const finalCourses = progressData.map(progress => {
+                    const meta = allCourses.find(c => c.id === progress.courseId);
+
+                    if (!meta) return null;
+
+                    return {
+                        id: meta.id,
+                        title: meta.title,
+                        image: "/api/placeholder/100/60", // Use real image path if available
+                        progress: Math.min((progress.completedVideosCount / 10) * 100, 100),
+                        lastAccessed: "Recently", // You can adjust this logic if available
+                    };
+                }).filter(Boolean); // filter out nulls
+
+                setCourses(finalCourses);
+                setIsLoad(false);
+            } catch (err) {
+                console.error(err.response?.data?.message || "Something went wrong");
+            }
         };
-      
+
         fetchCourseProgress();
-      }, [user?.uid]);
-      
-      
+    }, [user?.uid]);
+
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (!user) {
-            router.push("/login");
-          }
+            if (!user) {
+                router.push("/login");
+            }
         });
         return () => unsubscribe();
-      }, [user, router]);
+    }, [user, router]);
 
     // Mock userdemo data - this would come from your Firebase/backend
     const [userdemo, setUser] = useState({
@@ -504,11 +507,17 @@ const Dashboard = () => {
                         </motion.button> */}
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    {isLoad ? (
+                        <div className="w-auto h-auto">
+                    <Loader />
+                    </div>
+                    ):(
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         {courses.map((course, index) => (
                             <ImprovedCourseCard key={course.id} course={course} index={index} />
                         ))}
                     </div>
+                    )};
                 </motion.section>
 
                 {/* Rewards Section */}
