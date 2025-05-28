@@ -192,7 +192,8 @@ const Dashboard = () => {
     const [courses, setCourses] = useState([]);
     const { user, logO } = useAuth();
     const router = useRouter();
-    const [isLoad,setIsLoad] = useState(true);
+    const [isLoad, setIsLoad] = useState(true);
+    const [isdatapresent, setIsDataPresent] = useState(false);
     const handleSignOut = async () => {
         const confirmed = window.confirm("Are you sure you want to logout?");
         if (!confirmed) {
@@ -216,6 +217,7 @@ const Dashboard = () => {
                     `${process.env.NEXT_PUBLIC_PUBLIC_BACKEND_URL}/api/courses/allenroll`,
                     { params: { userId: user.uid } }
                 );
+                console.log(enrolledResponse);
 
                 const courseIds = enrolledResponse.data.courses; // ['cpp', 'web-dev', 'c-programming']
 
@@ -253,9 +255,15 @@ const Dashboard = () => {
                 }).filter(Boolean); // filter out nulls
 
                 setCourses(finalCourses);
+                setIsDataPresent(true);
                 setIsLoad(false);
             } catch (err) {
-                console.error(err.response?.data?.message || "Something went wrong");
+                if (err.response?.data?.message === "User not found or not enrolled in any course") {
+                    setIsLoad(false);
+                }
+                else {
+                    console.error(err.response?.data?.message || "Something went wrong")
+                }
             }
         };
 
@@ -508,16 +516,25 @@ const Dashboard = () => {
                     </div>
 
                     {isLoad ? (
-                        <div className="w-auto h-auto">
-                    <Loader />
-                    </div>
-                    ):(
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        {courses.map((course, index) => (
-                            <ImprovedCourseCard key={course.id} course={course} index={index} />
-                        ))}
-                    </div>
-                    )};
+                        <div className='flex items-center justify-center h-64'>
+                            <div className="w-64">
+                                <Loader />
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="col-span-full flex flex-col items-center justify-center text-center p-6 w-full h-full min-h-[300px]">
+                            <p className="text-xl font-semibold mb-4">No course enrolled yet. Start learning today!</p>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => router.push("/learncourse")}
+                                className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
+                            >
+                                Explore Courses
+                            </motion.button>
+                        </div>
+                        
+                    )}
                 </motion.section>
 
                 {/* Rewards Section */}

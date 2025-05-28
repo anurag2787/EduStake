@@ -3,8 +3,8 @@ import React from "react";
 function Loader() {
   return (
     <div
-      className="h-screen flex flex-col items-center justify-center gap-8 
-      bg-gradient-to-br from-black via-black to-gray-900"
+      className="h-full flex flex-col items-center justify-center gap-8 
+      bg-gray-800/70 backdrop-blur-sm rounded-xl border border-gray-700 shadow-lg p-8"
     >
       {/* Loader Animation */}
       <div className="relative">
@@ -40,12 +40,12 @@ function Loader() {
       </div>
 
       {/* Loading Progress Ring */}
-      <div className="w-48 h-1 rounded-full bg-gray-700 overflow-hidden">
+      {/* <div className="w-48 h-1 rounded-full bg-gray-700 overflow-hidden">
         <div
           className="h-full rounded-full bg-blue-400 
           animate-[loadingProgress_2s_ease-in-out_infinite]"
         ></div>
-      </div>
+      </div> */}
     </div>
   );
 }
