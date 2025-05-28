@@ -304,6 +304,7 @@ export default function CourseSelectionPage() {
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => router.push('/learn')}
             >
               Start Learning
               <motion.span

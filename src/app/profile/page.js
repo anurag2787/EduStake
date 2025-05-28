@@ -527,7 +527,7 @@ const Dashboard = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push("/learncourse")}
+                                onClick={() => router.push("/studycourse")}
                                 className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
                             >
                                 Explore Courses
