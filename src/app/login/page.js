@@ -254,6 +254,7 @@ export default function Auth() {
       } else {
         const userCredential =await createUserWithEmailAndPassword(auth, formData.email, formData.password);
         const user = userCredential.user;
+        user.displayName = formData.name;
 
         // Update the user's profile with their full name
         await updateProfile(user, { displayName: formData.name });
@@ -536,7 +537,7 @@ export default function Auth() {
                         }}
                       >
                         {authMode === 'login' 
-                          ? (<><span className='text-white'>{"Don't have an account?"}</span>{"  Sign up"}</>) 
+                          ? (<><span className='text-white'>{"Don't have an account? "}</span>{"  Sign up"}</>) 
                           : (<><span className='text-white'>Already have an account?</span>{"  Log in"}</>)}
                         <svg className="w-3 h-3 ml-1 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
