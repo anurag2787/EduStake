@@ -304,10 +304,6 @@ const Dashboard = () => {
         }
     }, [user]);
 
-    useEffect(() => {
-        console.log(userdemo.profilePicture); // Now you can track updated value
-    }, [userdemo.profilePicture]);
-
     // Mock courses data
     // const [courses, setCourses] = useState([
     //     {
@@ -421,6 +417,8 @@ const Dashboard = () => {
         setTimeout(() => setCopied(false), 2000);
     };
 
+    const Userimg = userdemo.profilePicture || "https://i.pinimg.com/474x/74/bd/8b/74bd8bb681f2401869a2484bcb095dff.jpg";
+
     return (
         <div className="min-h-screen bg-gray-900 text-gray-100 p-4 md:p-8">
             {/* Background gradient effect */}
@@ -459,14 +457,12 @@ const Dashboard = () => {
                     <div className="flex flex-col items-center text-center">
                         <div className="relative">
                             <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-lg shadow-blue-500/20">
-                                {userdemo.profilePicture && (
                                     <img
-                                        src={userdemo.profilePicture}
+                                        src={Userimg}
                                         alt="Profile"
                                         className="w-full h-full object-cover"
                                         referrerPolicy="no-referrer"
                                     />
-                                )}
                             </div>
                         </div>
 
@@ -522,18 +518,29 @@ const Dashboard = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className="col-span-full flex flex-col items-center justify-center text-center p-6 w-full h-full min-h-[300px]">
-                            <p className="text-xl font-semibold mb-4">No course enrolled yet. Start learning today!</p>
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push("/studycourse")}
-                                className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
-                            >
-                                Explore Courses
-                            </motion.button>
-                        </div>
-                        
+                        <>
+                            {isdatapresent ? (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    {courses.map((course, index) => (
+                                        <ImprovedCourseCard key={course.id} course={course} index={index} />
+                                    ))}
+                                </div>
+                                
+                            ) : (
+                                <div className="col-span-full flex flex-col items-center justify-center text-center p-6 w-full h-full min-h-[300px]">
+                                    <p className="text-xl font-semibold mb-4">No course enrolled yet. Start learning today!</p>
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        onClick={() => router.push("/studycourse")}
+                                        className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
+                                    >
+                                        Explore Courses
+                                    </motion.button>
+                                </div>
+                            )}
+                        </>
+
                     )}
                 </motion.section>
 
