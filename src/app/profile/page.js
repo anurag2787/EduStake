@@ -34,6 +34,7 @@ import { MdBusinessCenter, MdOutlineAnalytics } from "react-icons/md";
 import { SiC } from "react-icons/si";
 import axios from 'axios';
 import Loader from '@/components/Loader';
+import { toast } from 'react-toastify';
 
 const courseCategories = [
     {
@@ -200,8 +201,18 @@ const Dashboard = () => {
             return;
         }
         try {
-            await signOut(auth);
-            router.push("/login");
+            // await signOut(auth);
+            toast.info("👋 Logged out successfully!", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            })
+            // router.push("/login");
         } catch (error) {
             console.error("Logout error:", error);
         }

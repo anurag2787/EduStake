@@ -15,6 +15,7 @@ import {
 import { auth } from "../../auth";
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { toast } from 'react-toastify';
 
 const provider = new GoogleAuthProvider();
 
@@ -221,7 +222,6 @@ export default function Auth() {
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -250,7 +250,16 @@ export default function Auth() {
       if (authMode === 'login') {
         await signInWithEmailAndPassword(auth, formData.email, formData.password);
         setIsLoading(false);
-        router.push('/profile');
+        toast.success("✅ Logged in successfully!", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            })
       } else {
         const userCredential =await createUserWithEmailAndPassword(auth, formData.email, formData.password);
         const user = userCredential.user;
@@ -259,7 +268,16 @@ export default function Auth() {
         // Update the user's profile with their full name
         await updateProfile(user, { displayName: formData.name });
         setIsLoading(false);
-        alert("Account created successfully!");
+        toast.success("🎉 Registration successful!", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            });
       }
     } catch (error) {
       console.log(error.message);

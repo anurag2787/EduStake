@@ -11,7 +11,7 @@ import { SiC } from "react-icons/si";
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext'; // Ensure this is correctly imported";
 import axios from 'axios';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 // Sample course data
 const courseCategories = [
@@ -218,10 +218,16 @@ export default function CourseSelectionPage() {
       );
       console.log(user.uid, courseId.id, stakeAmountStr);
 
-      // Only show success if request was successful
-      toast.success("Enrollment successful!", {
-        position: "top-right"
-      });
+      toast.success("👋 Enrollment successful!", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            })
 
       await new Promise(resolve => setTimeout(resolve, 1000));
       router.push(`/learncourse?id=${courseId.id}`);
@@ -264,7 +270,6 @@ export default function CourseSelectionPage() {
 
   return (
     <>
-      <ToastContainer />
       <div className="min-h-screen bg-transparent text-white">
         <Head>
           <title>EduStake - Course Selection</title>

@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar';
 import StarryBackground from '@/components/StarryBackground';
 import { usePathname } from 'next/navigation';
 import { AuthProvider } from '@/context/AuthContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +38,15 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         </AuthProvider>
+        <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        theme="dark" // optional: dark/light/colored
+      />
       </body>
     </html>
   );
