@@ -8,6 +8,7 @@ import Link from 'next/link';
 import courseData from '../../assets/ccourseData.json';
 import { useAuth } from '@/context/AuthContext';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function LearnCoursePage() {
     const [courseId, setCourseId] = useState("");
@@ -110,7 +111,17 @@ export default function LearnCoursePage() {
                 videoId,
             });
             const data = response.data;
-            setMessages(previousMessages);
+            // setMessages(previousMessages);
+           toast.success("Marked Sucessfully!", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            })
         } catch (error) {
             console.error('Error :', error);
         }
@@ -261,15 +272,18 @@ export default function LearnCoursePage() {
 
                         <div className="flex space-x-3 mt-6">
                             {!showAIChat && (
+                                <>
                                 <motion.button
                                     onClick={() => markVideoCompleted(selectedVideo.id)}
                                     className="flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
+                                    
                                 >
                                     <CheckCircle className="h-5 w-5 mr-2" />
                                     Mark as Complete
                                 </motion.button>
+                                </>
                             )}
 
                             <motion.button

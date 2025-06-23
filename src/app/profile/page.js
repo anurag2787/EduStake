@@ -201,7 +201,7 @@ const Dashboard = () => {
             return;
         }
         try {
-            // await signOut(auth);
+            await signOut(auth);
             toast.info("👋 Logged out successfully!", {
               position: "top-right",
               autoClose: 3000,
@@ -212,7 +212,7 @@ const Dashboard = () => {
               progress: undefined,
               theme: "dark",
             })
-            // router.push("/login");
+            router.push("/login");
         } catch (error) {
             console.error("Logout error:", error);
         }
