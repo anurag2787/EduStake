@@ -72,7 +72,7 @@ Create a `.env` file in the root directory with the following variables:
 
 ```
 # Backend URL
-NEXT_PUBLIC_PUBLIC_BACKEND_URL=https://edu-stake-backend.vercel.app
+NEXT_PUBLIC_PUBLIC_BACKEND_URL=BACKEND_URL
 
 # Firebase Configuration
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
