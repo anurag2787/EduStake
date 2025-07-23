@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
-export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummary, setActiveSection }) {
+export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummary, setActiveSection, setIsNavVisible }) {
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState(null);
@@ -110,6 +110,7 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
 
       // Step 4: Transition after everything is done
       setActiveSection('summary');
+      setIsNavVisible(true);
     } catch (err) {
       console.error('Error processing file:', err);
       setError(err.message || 'Failed to process file. Please try again.');
