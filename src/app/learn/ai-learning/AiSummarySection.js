@@ -11,7 +11,7 @@ export default function AiSummarySection({ aiSummary, setAiSummary, setActiveSec
       exit={{ opacity: 0 }}
     >
       <motion.h2 
-        className="text-3xl md:text-4xl font-bold text-blue-300 mb-8 text-center"
+        className="text-3xl md:text-4xl font-bold text-blue-300 mb-8 text-center mt-12"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
