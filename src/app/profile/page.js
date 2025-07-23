@@ -308,8 +308,8 @@ const Dashboard = () => {
         if (user) {
             setUser({
                 ...userdemo,
-                name: user.displayName || "Alex Johnson",
-                email: user.email || "copy@gmail.com",
+                name: user.displayName || "Anurag Yadav",
+                email: user.email || "anuragyadav2787@gmail.com",
                 profilePicture: user.photoURL,
             });
         }

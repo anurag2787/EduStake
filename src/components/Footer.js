@@ -28,6 +28,7 @@ function Footer() {
               { name: "Home", path: "/" },
               { name: "About", path: "/about" },
               { name: "Courses", path: "/studycourse" },
+              { name: "FAQ", path: "/contact/faq" },
               { name: "Contact", path: "/contact" },
             ].map((link) => (
               <Link

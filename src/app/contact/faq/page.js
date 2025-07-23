@@ -116,10 +116,10 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black to-blue-900 text-white">
+    <div className="min-h-screen bg-transparent text-white">
       {/* Hero Section */}
       <section className="pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
           <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -231,21 +231,13 @@ export default function FAQPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="/contact"
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg text-white font-medium shadow-lg shadow-blue-600/30"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact Support
-              </motion.a>
-              <motion.a
-                href="mailto:support@edustake.com"
-                className="inline-flex items-center px-6 py-3 border border-blue-500 rounded-lg text-blue-300 font-medium hover:bg-blue-500/10"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Send Email
-              </motion.a>
+              href="/login"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-full text-white font-bold text-lg shadow-lg shadow-blue-600/30"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Us
+            </motion.a>
             </div>
           </motion.div>
         </div>

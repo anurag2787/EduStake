@@ -8,7 +8,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-br from-black to-blue-900 text-white">
       {/* Hero Section */}
       <section className="pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
           <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -41,10 +41,10 @@ export default function AboutPage() {
                 At EduStake, we believe that every learner deserves access to personalized, 
                 intelligent education. Our platform combines cutting-edge AI technology with 
                 proven educational methodologies to create learning experiences that adapt 
-                to each student's unique needs.
+                to each student&apos;s unique needs.
               </p>
               <p className="text-lg text-blue-100">
-                We're committed to making quality education accessible, engaging, and effective 
+                We&apos;re committed to making quality education accessible, engaging, and effective 
                 for learners worldwide, regardless of their background or learning style.
               </p>
             </motion.div>
