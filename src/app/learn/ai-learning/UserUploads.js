@@ -23,28 +23,21 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
   const handleDragEnter = () => setIsDragging(true);
   const handleDragLeave = () => setIsDragging(false);
 
-  const extractTextFromFile = async (file) => {
+  const extractBase64FromFile = async (file) => {
     return new Promise((resolve, reject) => {
-      if (file.type === 'text/plain') {
-        const reader = new FileReader();
-        reader.onload = (e) => resolve(e.target.result);
-        reader.onerror = (e) => reject(new Error('Failed to read text file'));
-        reader.readAsText(file);
-      } else {
-        // For all other file types, we'll send as base64
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const base64 = e.target.result.split(',')[1]; // Remove the data URL prefix
-          resolve({
-            content: base64,
-            mimeType: file.type
-          });
-        };
-        reader.onerror = (e) => reject(new Error('Failed to read file'));
-        reader.readAsDataURL(file);
-      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64 = e.target.result.split(',')[1]; // Strip off 'data:...base64,'
+        resolve({
+          content: base64,
+          mimeType: file.type,
+        });
+      };
+      reader.onerror = () => reject(new Error('Failed to read file'));
+      reader.readAsDataURL(file);
     });
   };
+
 
   const callGeminiAPI = async (fileContent) => {
     try {
@@ -62,6 +55,7 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
       });
 
       const responseText = await response.text(); // First get as text
+      console.log('Gemini API response:', responseText); // Log the raw response
 
       if (!response.ok) {
         // Try to parse error JSON, fallback to response text
@@ -88,36 +82,29 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
   };
 
   const handleSubmit = async () => {
-    if (!fileUploaded) return;
+    if (!fileUploaded || isProcessing) return; // <- avoid multiple triggers
+
+    setIsProcessing(true);
+    setError(null);
 
     try {
-      setIsProcessing(true);
-      setError(null);
+      // Step 1: Convert to base64
+      const fileContent = await extractBase64FromFile(fileUploaded);
 
-      // Extract content from file
-      let fileContent;
-      if (fileUploaded.type === 'text/plain') {
-        // For text files, send as plain text
-        fileContent = await extractTextFromFile(fileUploaded);
-      } else {
-        // For other files, send as base64 with mimeType
-        fileContent = await extractTextFromFile(fileUploaded);
-      }
-
-      // Call Gemini API with the content
+      // Step 2: Send to Gemini API
       const geminiResponse = await callGeminiAPI(fileContent);
 
-      // Parse and set the AI summary with additional data for flashcards and mind map
+      // Step 3: Update summary state
       setAiSummary({
         title: fileUploaded.name.split('.')[0],
         summary: geminiResponse.summary,
         keyPoints: geminiResponse.keyPoints,
-        concepts: geminiResponse.concepts || {}, // Ensure concepts exists
-        flashcards: geminiResponse.flashcards || [], // Add flashcards array
-        mindMapData: geminiResponse.mindMapData || {} // Add mind map data
+        concepts: geminiResponse.concepts || {},
+        flashcards: geminiResponse.flashcards || [],
+        mindMapData: geminiResponse.mindMapData || {},
       });
 
-      // Switch to summary view
+      // Step 4: Transition after everything is done
       setActiveSection('summary');
     } catch (err) {
       console.error('Error processing file:', err);
@@ -126,6 +113,7 @@ export default function UserUploads({ fileUploaded, setFileUploaded, setAiSummar
       setIsProcessing(false);
     }
   };
+
 
   return (
     <motion.section

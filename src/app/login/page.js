@@ -216,6 +216,16 @@ export default function Auth() {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, provider);
+      toast.success("✅ Logged in successfully!", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+            })
       router.push('/profile');
     } catch (error) {
       console.log(error.message);
